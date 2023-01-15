@@ -1,4 +1,11 @@
 
+
+
+.todo_main_body{
+    margin-top: 20vh;
+}
+
+
 .round_btm_input{
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;

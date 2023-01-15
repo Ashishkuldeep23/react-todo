@@ -13,7 +13,7 @@ const Feedback = () => {
                 <div className="collapse" id="collapseExample">
                     <div className="card card-body feed_body">
 
-                        <h3>Checking Only</h3>
+                        <h3>Checking</h3>
 
                         Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam quidem autem expedita, commodi placeat nemo accusamus enim! Quia accusamus id totam impedit et excepturi odio. Cumque maxime neque veritatis et.

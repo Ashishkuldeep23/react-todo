@@ -1,15 +1,15 @@
-import React, { useState , useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import "./style.css"
 
 
 // // // Get the local storage data back ----->
 
-const getLocalData = ()=>{
+const getLocalData = () => {
     const lists = localStorage.getItem("myTodoList");
 
-    if(lists){
+    if (lists) {
         return JSON.parse(lists)
-    }else{
+    } else {
         return []
     }
 
@@ -23,20 +23,20 @@ const Todo = () => {
     // // // Below for set item by given data and locally present data
     const [items, setItems] = useState(getLocalData())
 
-    const [ isEditTask , setUpdateTask] = useState("");
+    const [isEditTask, setUpdateTask] = useState("");
 
-    const [toggleBtn , setToggleBtn] = useState(false)
+    const [toggleBtn, setToggleBtn] = useState(false)
 
     // // // add items function
     function addItems() {
         if (!newTask) {
             alert('Please give some task to add!')
         }
-        else if(newTask && toggleBtn){
+        else if (newTask && toggleBtn) {
             setItems(
-                items.map((curEle)=>{
-                    if(curEle.id === isEditTask){
-                        return { ...curEle, name : newTask}
+                items.map((curEle) => {
+                    if (curEle.id === isEditTask) {
+                        return { ...curEle, name: newTask }
                     }
 
                     return curEle;
@@ -44,14 +44,14 @@ const Todo = () => {
             )
 
             setNewTask([])
-            setUpdateTask(null) 
-            setToggleBtn(false)       
+            setUpdateTask(null)
+            setToggleBtn(false)
 
         }
         else {
             const myNewTask = {
-                id : new Date().getTime().toString() ,
-                name : newTask
+                id: new Date().getTime().toString(),
+                name: newTask
             }
             setItems([...items, myNewTask])
             setNewTask("")
@@ -62,10 +62,10 @@ const Todo = () => {
 
     // // // Update items --->
 
-    const updateTask = (idGeted , name)=>{
+    const updateTask = (idGeted, name) => {
         setNewTask(name)
-        setUpdateTask(idGeted) 
-        setToggleBtn(true)       
+        setUpdateTask(idGeted)
+        setToggleBtn(true)
         // // // Please see the else if condition of addItems.
     }
 
@@ -73,8 +73,8 @@ const Todo = () => {
 
 
     // // // Delete single item --->
-    function deleteOneItem (idGeted){
-        const updatedItems = items.filter((curEle)=>{
+    function deleteOneItem(idGeted) {
+        const updatedItems = items.filter((curEle) => {
             return curEle.id !== idGeted
         })
         setItems(updatedItems)
@@ -82,48 +82,48 @@ const Todo = () => {
 
 
     // // // // Removing all Tasks -->
-    const removeAllTasks=()=>{
+    const removeAllTasks = () => {
         setItems([]);
     }
 
 
     // // // Data save in local storage by useEffect hooks -->
-    useEffect(()=>{
-        localStorage.setItem("myTodoList" , JSON.stringify(items))
-    } , [items])
+    useEffect(() => {
+        localStorage.setItem("myTodoList", JSON.stringify(items))
+    }, [items])
 
 
 
-    
-    const timeDiffFunc = (d)=>{
+
+    const timeDiffFunc = (d) => {
 
         let outPut = ""
 
         let date1 = new Date()    // // Current time
         let date2 = new Date(d)   // // When task created
 
-        var Difference_In_Time = date1.getTime() - date2.getTime()  
-      
-        var Difference_In_Hour = Difference_In_Time / (1000 * 3600 );
+        var Difference_In_Time = date1.getTime() - date2.getTime()
+
+        var Difference_In_Hour = Difference_In_Time / (1000 * 3600);
         let rounded = Math.round(Difference_In_Hour)
 
-        if(rounded > 4){
-            outPut = rounded+" H Ago"
+        if (rounded > 2) {
+            outPut = rounded + " H Ago"
         }
 
-        if(rounded > 24){
-            let days = Math.round(rounded/24)
-            outPut = days+" D Ago"
+        if (rounded > 24) {
+            let days = Math.round(rounded / 24)
+            outPut = days + " D Ago"
         }
-        
-        if(rounded > 730){
+
+        if (rounded > 730) {
             let months = Math.round(rounded / 730)
-            outPut = months+" M Ago"
+            outPut = months + " M Ago"
         }
-        
-        if(rounded > 8766){
+
+        if (rounded > 8766) {
             let years = Math.round(rounded / 8766)
-            outPut = years+" Y Ago"
+            outPut = years + " Y Ago"
         }
 
 
@@ -131,22 +131,23 @@ const Todo = () => {
     }
 
 
+    // // // UI starts here -------------->
 
     return (
 
 
-        <div className="container min-vw-100">
+        <div className="container min-vw-100  todo_main_body">
 
-            <div className="row ">
+            <div className="row  ">
 
-                
+
                 <div className="col-12 col-sm-9  mx-auto p-3 d-flex flex-column align-items-center ">
 
                     <h1 className='text-white'>Todo ( My schedule is )</h1>
 
                     {/* Input section */}
                     <div className="input-group ">
-                        <input className="form-control round_btm_input bg-info text-white"  placeholder='✍️Write your task!' id='mainInput' type="text"
+                        <input className="form-control round_btm_input bg-info text-white" placeholder='✍️Write your task!' id='mainInput' type="text"
                             value={newTask} onChange={(e) => { setNewTask(e.target.value) }}
                             onKeyDown={(e) => {
                                 if (e.keyCode === 13) { addItems() }
@@ -155,16 +156,55 @@ const Todo = () => {
                         <span className="input-group-text round_btm_input bg-warning">
 
                             {
-                                toggleBtn ?  <i className="fa-solid fa-file-pen" onClick={addItems} ></i> : <input type="button" value="Add" onClick={addItems} />
+                                toggleBtn ? <i className="fa-solid fa-file-pen" onClick={addItems} ></i> : <input type="button" value="Add" onClick={addItems} />
                             }
-                            
+
                         </span>
                     </div>
 
 
                     {/* Item section */}
+
+
+                    {/* Dummy item first */}
+
                     <div className="items ">
 
+                        <div className=' single_item d-flex justify-content-between border border-info rounded-2  p-2'>
+                            <p className='my-auto'><strong>0.</strong> Dummy Task</p>
+
+                            <div className='item_icons d-sm-flex '>
+
+                                {/* Below line for how many ago , curEle.id is storing time when created */}
+                                <span className='dayAgo'><small>3 H Ago</small></span>
+
+                                <div className='update_main mx-auto' >
+                                    <div className="dropdown-content_update">
+                                        <p className='bg-success'>Update</p>
+                                    </div>
+
+                                    <button id='updete' type="button" className="btn btn-outline-success btn-sm" >
+                                        <i className="fa-solid fa-file-pen"></i>
+                                    </button>
+                                </div>
+
+
+                                <div className="delete_one mx-auto" >
+                                    <div className="dropdown-content_delone ">
+                                        <p>Delete</p>
+                                    </div>
+
+                                    <button type="button" className="btn btn-outline-danger btn-sm">
+                                        <i className="fa-solid fa-delete-left"></i>
+                                    </button>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                        {/* Actual Data here start ----> */}
 
                         {
                             items.map((curEle, index) => {
@@ -179,8 +219,8 @@ const Todo = () => {
                                             {/* Below line for how many ago , curEle.id is storing time when created */}
                                             <span className=' dayAgo'><small>{timeDiffFunc(curEle.id)}</small></span>
 
-                                            <div className='update_main mx-auto' onClick={()=>{ updateTask(curEle.id , curEle.name)}}>
-                                                <div className="dropdown-content_update"  onClick={()=>{ updateTask(curEle.id , curEle.name)}}>
+                                            <div className='update_main mx-auto' onClick={() => { updateTask(curEle.id, curEle.name) }}>
+                                                <div className="dropdown-content_update" onClick={() => { updateTask(curEle.id, curEle.name) }}>
                                                     <p className='bg-success'>Update</p>
                                                 </div>
 
@@ -190,8 +230,8 @@ const Todo = () => {
                                             </div>
 
 
-                                            <div className="delete_one mx-auto" onClick={()=>{ deleteOneItem(curEle.id) }} >
-                                                <div className="dropdown-content_delone "  onClick={()=>{ deleteOneItem(curEle.id) }} >
+                                            <div className="delete_one mx-auto" onClick={() => { deleteOneItem(curEle.id) }} >
+                                                <div className="dropdown-content_delone " onClick={() => { deleteOneItem(curEle.id) }} >
                                                     <p>Delete</p>
                                                 </div>
 
@@ -202,7 +242,7 @@ const Todo = () => {
 
 
                                         </div>
-                                   </div>
+                                    </div>
 
 
 
@@ -210,19 +250,13 @@ const Todo = () => {
                             })
                         }
 
-
-
-
-
-
-
                     </div>
 
 
                     {/* Clear All section */}
 
 
-                    <div className="clear d-flex justify-content-center align-items-center bg-info">
+                    <div className="clear d-flex justify-content-center align-items-center bg-warning">
 
                         <div className="delete_one this_to_all_del" onClick={removeAllTasks} >
 
