@@ -94,6 +94,31 @@ const Todo = () => {
 
 
 
+
+    const timeDiffFunc = (d)=>{
+
+        let outPut = ""
+
+        let date1 = new Date()    // // Current time
+        let date2 = new Date(d)   // // When task created
+
+        var Difference_In_Time = date1.getTime() - date2.getTime()  
+      
+        var Difference_In_Hour = Difference_In_Time / (1000 * 60 * 60 * 60 );
+        let rounded = Math.round(Difference_In_Hour)
+
+        if(rounded > 4){
+            outPut = rounded+"H Ago"
+        }else if(rounded > 24){
+            let days = Math.round(rounded/24)
+            outPut = days+"D Ago "
+        }
+
+        return outPut
+    }
+
+
+
     return (
 
 
@@ -134,9 +159,12 @@ const Todo = () => {
 
 
                                     <div className=' d-flex justify-content-between border border-info rounded-2  p-2' key={curEle.id}>
-                                        <p className='my-auto'>{index + 1}. {curEle.name}</p>
+                                        <p className='my-auto'><strong>{index + 1}.</strong> {curEle.name}</p>
 
                                         <div className='item_icons d-sm-flex '>
+
+                                            {/* Below line for how many ago , curEle.id is storing time when created */}
+                                            <span className='d-flex  align-items-end'><small>{timeDiffFunc(curEle.id)}</small></span>
 
                                             <div className='update_main mx-auto' onClick={()=>{ updateTask(curEle.id , curEle.name)}}>
                                                 <div className="dropdown-content_update"  onClick={()=>{ updateTask(curEle.id , curEle.name)}}>
@@ -161,7 +189,7 @@ const Todo = () => {
 
 
                                         </div>
-                                    </div>
+                                   </div>
 
 
 
