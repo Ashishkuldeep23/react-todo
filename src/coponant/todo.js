@@ -94,7 +94,7 @@ const Todo = () => {
 
 
 
-
+    
     const timeDiffFunc = (d)=>{
 
         let outPut = ""
@@ -104,15 +104,28 @@ const Todo = () => {
 
         var Difference_In_Time = date1.getTime() - date2.getTime()  
       
-        var Difference_In_Hour = Difference_In_Time / (1000 * 60 * 60 * 60 );
+        var Difference_In_Hour = Difference_In_Time / (1000 * 3600 );
         let rounded = Math.round(Difference_In_Hour)
 
         if(rounded > 4){
             outPut = rounded+"H Ago"
-        }else if(rounded > 24){
-            let days = Math.round(rounded/24)
-            outPut = days+"D Ago "
         }
+
+        if(rounded > 24){
+            let days = Math.round(rounded/24)
+            outPut = days+"D Ago"
+        }
+        
+        if(rounded > 730){
+            let months = Math.round(rounded / 730)
+            outPut = months+"M Ago"
+        }
+        
+        if(rounded > 8766){
+            let years = Math.round(rounded / 8766)
+            outPut = years+"Y Ago"
+        }
+
 
         return outPut
     }
@@ -164,7 +177,7 @@ const Todo = () => {
                                         <div className='item_icons d-sm-flex '>
 
                                             {/* Below line for how many ago , curEle.id is storing time when created */}
-                                            <span className='d-flex  align-items-end'><small>{timeDiffFunc(curEle.id)}</small></span>
+                                            <span className=' dayAgo'><small>{timeDiffFunc(curEle.id)}</small></span>
 
                                             <div className='update_main mx-auto' onClick={()=>{ updateTask(curEle.id , curEle.name)}}>
                                                 <div className="dropdown-content_update"  onClick={()=>{ updateTask(curEle.id , curEle.name)}}>

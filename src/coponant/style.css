@@ -25,7 +25,15 @@
 
 .item_icons{
     min-width: 10%;
-    
+    width: auto;
+}
+
+.dayAgo{
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: blueviolet;
+    display: flex;
+    align-items: flex-end;
 }
 
 
