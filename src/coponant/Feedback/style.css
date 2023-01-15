@@ -1,0 +1,24 @@
+
+.feedback_main{
+
+    width: 100%;
+    height: auto;
+
+    background-color: transparent;
+
+    position: absolute;
+    bottom: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+   
+
+}   
+
+
+.feed_body{
+    overflow: scroll;
+}

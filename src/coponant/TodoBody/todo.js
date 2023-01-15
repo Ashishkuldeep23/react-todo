@@ -108,22 +108,22 @@ const Todo = () => {
         let rounded = Math.round(Difference_In_Hour)
 
         if(rounded > 4){
-            outPut = rounded+"H Ago"
+            outPut = rounded+" H Ago"
         }
 
         if(rounded > 24){
             let days = Math.round(rounded/24)
-            outPut = days+"D Ago"
+            outPut = days+" D Ago"
         }
         
         if(rounded > 730){
             let months = Math.round(rounded / 730)
-            outPut = months+"M Ago"
+            outPut = months+" M Ago"
         }
         
         if(rounded > 8766){
             let years = Math.round(rounded / 8766)
-            outPut = years+"Y Ago"
+            outPut = years+" Y Ago"
         }
 
 
@@ -142,17 +142,17 @@ const Todo = () => {
                 
                 <div className="col-12 col-sm-9  mx-auto p-3 d-flex flex-column align-items-center ">
 
-                    <h1 className='text-white'>My Todo ( My schedule is )</h1>
+                    <h1 className='text-white'>Todo ( My schedule is )</h1>
 
                     {/* Input section */}
                     <div className="input-group ">
-                        <input className="form-control round_btm_input" placeholder='✍️Write your task!' id='mainInput' type="text"
+                        <input className="form-control round_btm_input bg-info text-white"  placeholder='✍️Write your task!' id='mainInput' type="text"
                             value={newTask} onChange={(e) => { setNewTask(e.target.value) }}
                             onKeyDown={(e) => {
                                 if (e.keyCode === 13) { addItems() }
                             }}
                         />
-                        <span className="input-group-text round_btm_input ">
+                        <span className="input-group-text round_btm_input bg-warning">
 
                             {
                                 toggleBtn ?  <i className="fa-solid fa-file-pen" onClick={addItems} ></i> : <input type="button" value="Add" onClick={addItems} />
@@ -171,7 +171,7 @@ const Todo = () => {
                                 return (
 
 
-                                    <div className=' d-flex justify-content-between border border-info rounded-2  p-2' key={curEle.id}>
+                                    <div className=' single_item d-flex justify-content-between border border-info rounded-2  p-2' key={curEle.id}>
                                         <p className='my-auto'><strong>{index + 1}.</strong> {curEle.name}</p>
 
                                         <div className='item_icons d-sm-flex '>
@@ -222,7 +222,7 @@ const Todo = () => {
                     {/* Clear All section */}
 
 
-                    <div className="clear d-flex justify-content-center align-items-center">
+                    <div className="clear d-flex justify-content-center align-items-center bg-info">
 
                         <div className="delete_one this_to_all_del" onClick={removeAllTasks} >
 
@@ -237,11 +237,6 @@ const Todo = () => {
                         </div>
 
                     </div>
-
-
-
-
-
 
 
                 </div>

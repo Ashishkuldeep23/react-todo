@@ -21,6 +21,14 @@
 }
 
 
+.single_item:hover{
+    background-color: rgba(0, 255, 183, 0.403);
+    font-size: 1.1rem;
+    transform: scaleY(1.1);
+    border-left: 4px solid darkblue !important;
+    border-right: 4px solid darkblue !important;
+}
+
 
 
 .item_icons{
