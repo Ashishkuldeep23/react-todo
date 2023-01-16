@@ -143,6 +143,11 @@ const Todo = () => {
 
                 <div className="col-12 col-sm-9  mx-auto p-3 d-flex flex-column align-items-center ">
 
+                    <div>
+                        <img src="https://i.pinimg.com/564x/3c/6d/eb/3c6debf67d550119ae777083c4b5b4ed.jpg" id='todoImag' alt="Todo" />
+                    </div>
+
+                    
                     <h1 className='text-white'>Todo ( My schedule is )</h1>
 
                     {/* Input section */}
@@ -271,6 +276,9 @@ const Todo = () => {
                         </div>
 
                     </div>
+
+                    {/* Div used for gap*/}
+                    <div id="forGap"></div>
 
 
                 </div>
