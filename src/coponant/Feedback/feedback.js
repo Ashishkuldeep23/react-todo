@@ -11,7 +11,7 @@ const Feedback = () => {
     // // // Getting full url ---->
     // console.log(window.location.href)
 
-    // // // // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< some refring divs >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    // // // // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< some refering divs >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     const reftoAllFeed = useRef(null);
     const refFeedClickBtn = useRef(null)
 
@@ -112,7 +112,7 @@ const Feedback = () => {
 
 
             // // // Set localstorage for ferture ----------------->
-            localStorage.setItem("FeedBackForTodoAk", "1")
+            localStorage.setItem("FeedBackForTodoAK", "yes")
 
             // // // set value 0 to alReady all feeds fetched --->
             // alReadyFeedShown = 0
@@ -129,30 +129,30 @@ const Feedback = () => {
 
 
 
-    // // // // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Next Section >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
+    // // // // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Clear feed form Section >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    
+    
     // // // Clear feed form -->
     const clearFeedDetails = () => {
         document.getElementById("feed_form").reset()
     }
+    
+    
+    
+    
+    
+    // // // // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Next Section >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
+    // // Check feedback is submited in past or not ---->
+    // // Below is for checking previously submited feedback or not ----->
 
 
-
-    // // // // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Clear feed form Section >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
-    // // // Check feedback is submited in past or not ---->
-    // // // Below is for checking previously submited feedback or not ----->
-
-
-    // let periviousFeedBack = localStorage.getItem("FeedBackForTodoAk")
-    // // console.log(periviousFeedBack)
-    // if (periviousFeedBack) {
-    //     document.querySelector(".show_All_FeedBack_main").style.display = "flex"
-    // }
+    let periviousFeedBack = localStorage.getItem("FeedBackForTodoAK")
+    // console.log(periviousFeedBack)
+    if (! periviousFeedBack ) { 
+        document.querySelector(".show_All_FeedBack_main").style.visibility = "hidden"
+    }
 
 
     // // // Not Working Now above --------+
