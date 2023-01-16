@@ -1,4 +1,13 @@
 
+
+
+
+
+
+
+/* Feedback main style (form and about) starts here --> */
+
+
 .feedback_main{
 
     width: 100%;
@@ -22,5 +31,244 @@
 
 
 .feed_body{
-    overflow: scroll;
+    overflow-y: scroll;
+    height: 94.5vh;
+    /* height: auto; */
+    width: 100vw;
+
+    background-image: linear-gradient(145deg ,cyan ,yellow ,  violet  , yellow , violet , cyan);
+    border: 2px solid red;
+    border-radius: 10vh;
+
+    padding:0 ;
+
+}
+
+
+
+
+#feed_name{
+    height: 4vh;
+    font-size: 1.2rem;
+    border-radius: 1vh;
+}
+
+
+#feed_radio {
+    padding: 0 5vh;
+    font-weight: bolder;
+}
+
+#feed_msg {
+    resize: none;
+    font-size: 1rem;
+    padding: 1vh;
+    border-radius: 1vh;
+}
+
+
+#feed_submit_btn{
+    width: 15vh;
+    height: 4vh;
+    font-weight: 900;
+    letter-spacing: 4px;
+    background-color: #40ff00;
+    border-radius: 0.5vh;
+}
+
+#feed_submit_btn:hover{
+    border-radius: 2vh;
+    color: yellow;
+    cursor: pointer;
+}
+
+#feed_submit_btn:active{
+    color: white;
+}
+
+.clear_btn{
+    background-color: rgb(202, 39, 39);
+    height: 25px; 
+    width: 45px; 
+    color: white; 
+    border-radius:0.5vh; 
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.clear_btn:hover{
+    cursor: pointer;
+    color: yellow;
+    border-radius:2vh; 
+}
+
+.clear_btn:active{
+    background-color: cyan;
+}
+
+#progress_feed {
+    height: 5px;
+    width: 100%;
+    border-radius: 2vh;
+    margin: 1vh 0;
+    background-image: linear-gradient(to right, cyan , tomato);
+    visibility: hidden;
+    animation: progressForLoadData 0.3s infinite alternate-reverse ease-in-out;
+}
+
+
+
+#about_img {
+    height: 25vh;
+    width: 25vh;
+    border-radius: 50%;
+    border: 1px solid skyblue;
+    object-fit: initial;
+    transition: ease-in-out , border-radius  0.5s , transform 0.5s;
+}
+
+
+#about_img:hover{
+    border-top: 4px solid red;
+    border-bottom: 4px solid red;
+    border-radius: 2vh;
+    transform: scale(1.4);
+}
+
+
+
+.logos {
+    margin: 2vh;
+    height: 35px;
+    width: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    transition: ease-in-out  transform 0.15s;
+}
+
+.logos:hover{
+    transform: scale(1.4);
+}
+
+.logos:active{
+    background-color: yellow;
+}
+
+
+/* Feedback main style Ends here --> */
+
+
+
+
+/* Show all feed with btn and all feeds (starts) */
+
+.show_all_feeds_topmost_div{
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 15vh;
+}
+
+.show_All_FeedBack_main{
+    background-color: #e6d3ed;
+    width: 95%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    padding: 2vh;
+    margin-bottom: 2vh;
+
+    border-top: 2px solid blue;
+    border-bottom: 2px solid blue;
+    border-radius: 5vh; 
+
+    
+}
+
+.show_All_FeedBack_main > h1{
+    font-size: 0.8rem;
+}
+
+#show_all_feed_btn{
+    font-size: 1.4rem;  
+    border-radius: 1vh;
+    font-weight: 600;
+    color: white;
+    background-color: black;
+}
+
+#show_all_feed_btn:hover{
+    color: yellow;
+    border-radius: 5vh;
+    cursor: pointer;
+}
+
+#show_all_feed_btn:active{
+    background-color: yellow;
+    color: red;
+}
+
+
+#process_all_feeds{
+    height: 5px;
+    width: 100%;
+    border-radius: 2vh;
+    margin: 1vh 0;
+    background-image: linear-gradient(to right, tomato,blue);
+    visibility: hidden;
+    animation: progressForLoadData 0.5s infinite alternate-reverse ease-in-out;
+}
+
+#all_feedback{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Show all feed with btn and all feeds (End) */
+
+
+
+
+/* Below is used in user feedback result (Start) */
+.user_feeds_are{
+    height: auto;
+    width: 40vh;
+    background-color: rgba(56, 244, 219, 0.292);
+    border-left: 4px solid red;
+    border-right: 4px solid red;
+    margin: 2vh 1vh;
+    padding: 1vh;
+    font-size: 1.1rem;
+    border-radius: 2vh;
+
+}
+
+.user_feeds_are:hover{
+    transform: scale(1.1);
+    border-top:1px solid red ;
+    border-bottom:1px solid red ;
+}
+
+/* Below is used in user feedback result (Ends) */
+
+
+
+
+
+/* Animation used is loading */
+
+@keyframes progressForLoadData {
+
+    0% {
+        width: 10%;
+    }
+    100% {
+        width: 70%;
+    }
+
 }
