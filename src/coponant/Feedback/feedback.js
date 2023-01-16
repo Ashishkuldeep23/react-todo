@@ -208,16 +208,24 @@ const Feedback = () => {
             // // // Temp var to store all feeds from DB -->
             let temp = ""
 
-            for (let i = 0; i < a.data.length; i++) {
-                temp += `  
-                <div class="user_feeds_are">
+            if(a.data.length === 0){
+
+                temp = "<div class='user_feeds_are'> <h3>Not Found any Feedback</h3> <p>Give your Feedback and Become First Person</p> </div>"
+
+            }else{
+
+                for (let i = 0; i < a.data.length; i++) {
+                    temp += `  
+                    <div class="user_feeds_are">
                     <h3>Name :- ${a.data[i].feedbackName}</h3>
                     <p>Type :- ${a.data[i].feedbackType}</p>
                     <p>Count :- ${a.data.length - i} </p>
                     <p>Message:- ${a.data[i].feedbackMsg}</p>
                     <p>Reply:- ${a.data[i].reply || "Thank You!"}</p>
                     <p>Time:- ${a.data[i].whenCreated}</p>
-                </div> `
+                    </div> `
+                }
+
             }
 
             // // // setting inner html to outPut div
@@ -258,13 +266,13 @@ const Feedback = () => {
             <div className='feedback_main'>
 
                 <a className="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    Feedback Section
+                    Open Feedback Section
                 </a>
 
-                {/* className="collapse"  :::: add this in bellow div */}
+                {/* className="collapse"  :::: add this in bellow div (For visible all time) */}
 
-                <div id="collapseExample" className="collapse">
-                    <div className="card card-body p-0 bg-secondary ">
+                <div id="collapseExample" className="collapse" >
+                    <div className="card card-body p-0 bg-dark ">
 
 
                         <div className='feed_body'>
@@ -274,13 +282,15 @@ const Feedback = () => {
 
                                 <div className="container-fluide d-flex align-items-center  ">
 
-                                    <div className="row d-flex justify-content-center h-75 ">
+                                    <div className="row d-flex justify-content-center h-100 ">
 
                                         <div className="col-10 col-md-6 d-flex flex-column align-items-center  ">
 
 
 
-                                            <form action="" id='feed_form' className='m-5 p-3 bg-primary border border-danger rounded'>
+                                            <form action="" id='feed_form' className='m-5 p-3 bg-primary border border-danger rounded '>
+
+                                                <h1 className='text-warning p-1 border border-warning border-end-0 border-start-0 rounded-3'>Feedback Form</h1>
 
                                                 <div>
                                                     <label htmlFor='feed_name' ><h2>Visitor Name :-</h2></label><br />
@@ -289,7 +299,7 @@ const Feedback = () => {
 
                                                 <div id="feed_radio">
                                                     <h2>Types of Feedback :-</h2>
-                                                    <input type="radio" name="feed_type" value="Feedback" id="feedback_only"
+                                                    <input type="radio" name="feed_type" value="Feedback" id="feedback_only" defaultChecked={true}
                                                         /><label htmlFor='feedback_only' >Feedback</label><br />
 
                                                     <input type="radio" name="feed_type" value="Suggestion" id="Suggestion" /><label
@@ -311,9 +321,9 @@ const Feedback = () => {
                                                     <textarea name="feed_msg" placeholder="Nice website (Your Feedback Message)" id="feed_msg" cols="35" rows="7"></textarea>
                                                 </div>
 
-                                                <div>
+                                                <div className='d-flex align-items-end' id="feedBtn_div">
                                                     <input type="button" id="feed_submit_btn" onClick={submitFeedDetails} value="Submit" />
-                                                    <input type="button" value="Clear" onClick={clearFeedDetails} className="clear_btn" />
+                                                    <input type="button" value="Clear" onClick={clearFeedDetails} id="clear_btn" />
                                                 </div>
 
                                                 <div id="progress_feed"></div>
@@ -331,13 +341,15 @@ const Feedback = () => {
 
                                         <div className="col-10 col-md-6  d-flex flex-column align-items-center justify-content-center right_content">
 
-                                            <div className='row '>
+                                            <div className='row ' >
 
 
-                                                <div className="col-12 col-md-8 bg-success m-auto border border-bottom-0 border-danger rounded">
+                                                <div className="col-12 col-md-8 bg-success m-auto border border-bottom-0 border-danger rounded aboutMeAk" >
 
 
-                                                    <div className=' d-flex flex-column align-items-center m-auto text-white'>
+                                                    <div className=' d-flex flex-column align-items-center p-3 m-auto text-white'>
+
+                                                        <h1 className='text-danger p-1 border border-danger border-end-0 border-start-0 rounded-3'>About Me</h1>
 
                                                         <img src="https://i.pinimg.com/564x/72/6e/92/726e92a0ef5a07e46e0403ae36c0b228.jpg" id="about_img" alt="Ashish Pic" />
 
@@ -359,7 +371,7 @@ const Feedback = () => {
 
                                                 </div>
 
-                                                <div className=" bg-success text-center col-12 col-md-8 m-auto border border-warning border-top-0 rounded text-white">
+                                                <div className=" bg-success text-center col-12 col-md-8 m-auto border border-warning border-top-0 rounded text-white aboutMeAk" >
                                                     <h4>I am learning web development.</h4>
                                                     <h4>I am fallowing MERN Stack</h4>
                                                     <h4>Fallow me on social media</h4>
@@ -408,7 +420,7 @@ const Feedback = () => {
                         {/* collapse cancel btn ------> (again) */}
                         <div className='d-flex justify-content-center '>
                             <a className="btn btn-primary " data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                Feedback Section
+                                Close Feedback Section
                             </a>
                         </div>
 
