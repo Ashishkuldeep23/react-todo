@@ -51,7 +51,8 @@ const Todo = () => {
         else {
             const myNewTask = {
                 id: new Date().getTime().toString(),
-                name: newTask
+                name: newTask ,
+                date : new Date()
             }
             setItems([...items, myNewTask])
             setNewTask("")
@@ -95,15 +96,18 @@ const Todo = () => {
 
 
 
-    const timeDiffFunc = (d) => {
+    const timeDiffFunc = (date) => {
+
 
         let outPut = ""
 
         let date1 = new Date()    // // Current time
-        let date2 = new Date(d)   // // When task created
-
+        let date2 = new Date(date)   // // When task created
+        
         var Difference_In_Time = date1.getTime() - date2.getTime()
-
+        
+        // console.log(Difference_In_Time)
+        
         var Difference_In_Hour = Difference_In_Time / (1000 * 3600);
         let rounded = Math.round(Difference_In_Hour)
 
@@ -222,7 +226,7 @@ const Todo = () => {
                                         <div className='item_icons d-sm-flex '>
 
                                             {/* Below line for how many ago , curEle.id is storing time when created */}
-                                            <span className=' dayAgo'><small>{timeDiffFunc(curEle.id)}</small></span>
+                                            <span className=' dayAgo'><small>{timeDiffFunc(curEle.date)}</small></span>
 
                                             <div className='update_main mx-auto' onClick={() => { updateTask(curEle.id, curEle.name) }}>
                                                 <div className="dropdown-content_update" onClick={() => { updateTask(curEle.id, curEle.name) }}>
