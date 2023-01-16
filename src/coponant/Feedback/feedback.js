@@ -148,11 +148,11 @@ const Feedback = () => {
     // // Below is for checking previously submited feedback or not ----->
 
 
-    let periviousFeedBack = localStorage.getItem("FeedBackForTodoAK")
-    // console.log(periviousFeedBack)
-    if (! periviousFeedBack ) { 
-        document.querySelector(".show_All_FeedBack_main").style.visibility = "hidden"
-    }
+    // let periviousFeedBack = localStorage.getItem("FeedBackForTodoAK")
+    // // console.log(periviousFeedBack)
+    // if (! periviousFeedBack ) { 
+    //     document.querySelector(".show_All_FeedBack_main").style.visibility = "hidden"
+    // }
 
 
     // // // Not Working Now above --------+
