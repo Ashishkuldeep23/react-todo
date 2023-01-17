@@ -245,7 +245,7 @@ const Feedback = () => {
 
             let periviousFeedBack = localStorage.getItem("FeedBackForTodoAK")
             if (periviousFeedBack !== "yes") {
-                alert("Please Give your valuable feedback for this ToDo App. \n My apology for Alert.")
+                alert("Please Give your valuable feedback for this ToDo App.\nMy apology for Alert.")
             }
 
 
