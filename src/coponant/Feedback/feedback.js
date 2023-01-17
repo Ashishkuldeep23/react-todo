@@ -373,8 +373,8 @@ const Feedback = () => {
 
                                                         <div>
                                                             <h4>I am learning web development.</h4>
-                                                            <h4>I am fallowing MERN Stack.</h4>
-                                                            <h4>Fallow me on social media.</h4>
+                                                            <h4>I am following MERN Stack.</h4>
+                                                            <h4>Follow me on social media.</h4>
                                                         </div>
 
 
