@@ -64,6 +64,10 @@ const Todo = () => {
     // // // Update items --->
 
     const updateTask = (idGeted, name) => {
+
+        // // By below line of code when update btn clicked then input in focused mode means ready to take input.
+        document.getElementById("mainInput").focus()
+
         setNewTask(name)
         setUpdateTask(idGeted)
         setToggleBtn(true)
@@ -82,10 +86,12 @@ const Todo = () => {
     }
 
 
+
     // // // // Removing all Tasks -->
     const removeAllTasks = () => {
         setItems([]);
     }
+
 
 
     // // // Data save in local storage by useEffect hooks -->
@@ -96,6 +102,7 @@ const Todo = () => {
 
 
 
+    // // // Time how many ago written a task.
     const timeDiffFunc = (date) => {
 
 
@@ -130,9 +137,10 @@ const Todo = () => {
             outPut = years + " Y Ago"
         }
 
-
         return outPut
     }
+
+
 
 
     // // // UI starts here -------------->
@@ -185,7 +193,7 @@ const Todo = () => {
                             <div className='item_icons d-sm-flex '>
 
                                 {/* Below line for how many ago , curEle.id is storing time when created */}
-                                <span className='dayAgo'><small>3 H Ago</small></span>
+                                <span className='dayAgo'><small>3 H Ago(Time)</small></span>
 
                                 <div className='update_main mx-auto' >
                                     <div className="dropdown-content_update">
