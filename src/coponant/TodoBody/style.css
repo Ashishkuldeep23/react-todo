@@ -49,13 +49,8 @@
     font-size: 0.8rem;
     font-weight: 700;
     color: blueviolet;
-    /* display: flex;
-    align-items: flex-end; */
-    margin-bottom: -1.5vh;
-    margin-top: -0.5vh;
-
     position: relative;
-    top:3.5vh;
+    top:3vh;
 
 }
 
