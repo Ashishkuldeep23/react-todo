@@ -1,6 +1,6 @@
 
 
-import React , {useRef} from 'react'
+import React, { useRef } from 'react'
 import "./style.css"
 
 
@@ -18,7 +18,7 @@ const Feedback = () => {
     // // // // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Post new Feed Section >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
     const network = navigator.onLine
-    
+
 
     // // // Submit new feed back --->
 
@@ -70,7 +70,7 @@ const Feedback = () => {
             feedbackName: feedName,
             feedbackType: checkedRadio,
             feedbackMsg: feedMsg,
-            feedFromWebName : window.location.href
+            feedFromWebName: window.location.href
         }
 
 
@@ -107,8 +107,8 @@ const Feedback = () => {
 
             // // // Scroll to hidden div ---->
 
-            refFeedClickBtn.current?.scrollIntoView({ behavior: "smooth"})
-  
+            refFeedClickBtn.current?.scrollIntoView({ behavior: "smooth" })
+
 
 
             // // // Set localstorage for ferture ----------------->
@@ -130,17 +130,17 @@ const Feedback = () => {
 
 
     // // // // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Clear feed form Section >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    
-    
+
+
     // // // Clear feed form -->
     const clearFeedDetails = () => {
         document.getElementById("feed_form").reset()
     }
-    
-    
-    
-    
-    
+
+
+
+
+
     // // // // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Next Section >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
@@ -149,10 +149,12 @@ const Feedback = () => {
 
 
     // let periviousFeedBack = localStorage.getItem("FeedBackForTodoAK")
-    // // console.log(periviousFeedBack)
-    // if (! periviousFeedBack ) { 
+    // console.log(periviousFeedBack)
+    // if (periviousFeedBack !== "yes" ) { 
     //     document.querySelector(".show_All_FeedBack_main").style.visibility = "hidden"
+    //     console.log("I am in")
     // }
+
 
 
     // // // Not Working Now above --------+
@@ -166,9 +168,9 @@ const Feedback = () => {
 
 
     // // // Show all feeds ----->
-    
+
     async function showAllFeedBack() {
-        
+
 
         if (network === false) {
             // alertBoxValue = 1
@@ -204,15 +206,15 @@ const Feedback = () => {
         if (a.status === true) {
             // // // Process hide and already shown value ---->
             prrocessAllFeed.style.visibility = "hidden"
-           
+
             // // // Temp var to store all feeds from DB -->
             let temp = ""
 
-            if(a.data.length === 0){
+            if (a.data.length === 0) {
 
                 temp = "<div class='user_feeds_are'> <h3>Not Found any Feedback</h3> <p>Give your Feedback and Become First Person</p> </div>"
 
-            }else{
+            } else {
 
                 for (let i = 0; i < a.data.length; i++) {
                     temp += `  
@@ -231,18 +233,20 @@ const Feedback = () => {
             // // // setting inner html to outPut div
             document.getElementById("all_feedback").innerHTML = temp
 
-
-            // alertBoxValue = 1
-            // return showAlertBox(`Successfull :- ${a.message} `, true, "All Feedback fetched")
-            // return alert(a.message)
-
+            
 
             // // // After successfull fetched data scrolling window till div --->
             // // // Experiment(worked) ================>
             // // // Window scrool to output div ----->
-            
-            reftoAllFeed.current?.scrollIntoView({ behavior: "smooth"})
+
+            reftoAllFeed.current?.scrollIntoView({ behavior: "smooth" })
             // reftoAllFeed.current?.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" })
+
+
+            let periviousFeedBack = localStorage.getItem("FeedBackForTodoAK")
+            if (periviousFeedBack !== "yes") {
+                alert("Please Give your valuable feedback for this ToDo App. \n My apology for Alert.")
+            }
 
 
         }
@@ -261,17 +265,17 @@ const Feedback = () => {
     return (
         <>
 
-          
+
 
             <div className='feedback_main'>
 
-                <a className="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <a className="btn btn-primary bg-success" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                     Open Feedback Section
                 </a>
 
                 {/* className="collapse"  :::: add this in bellow div (For visible all time) */}
 
-                <div id="collapseExample" className="collapse" >
+                <div id="collapseExample" className="collapse">
                     <div className="card card-body p-0 bg-dark ">
 
 
@@ -300,7 +304,7 @@ const Feedback = () => {
                                                 <div id="feed_radio">
                                                     <h2>Types of Feedback :-</h2>
                                                     <input type="radio" name="feed_type" value="Feedback" id="feedback_only" defaultChecked={true}
-                                                        /><label htmlFor='feedback_only' >Feedback</label><br />
+                                                    /><label htmlFor='feedback_only' >Feedback</label><br />
 
                                                     <input type="radio" name="feed_type" value="Suggestion" id="Suggestion" /><label
                                                         htmlFor='Suggestion'>Suggestion</label><br />
@@ -312,7 +316,7 @@ const Feedback = () => {
                                                         htmlFor='bug'>Bug</label> <br />
 
                                                     <input type="radio" name="feed_type" value="Bad Message" id="criticize" /><label
-                                                       htmlFor='criticize' >Don't Like(Message)</label>
+                                                        htmlFor='criticize' >Don't Like(Message)</label>
 
                                                 </div>
 
@@ -341,13 +345,13 @@ const Feedback = () => {
 
                                         <div className="col-10 col-md-6  d-flex flex-column align-items-center justify-content-center right_content">
 
-                                            <div className='row ' >
+                                            <div className='row' >
 
 
-                                                <div className="col-12 col-md-8 bg-success m-auto border border-bottom-0 border-danger rounded aboutMeAk" >
+                                                <div className="col-12 bg-success m-auto border border-bottom-0 border-danger rounded aboutMeAk" >
 
 
-                                                    <div className=' d-flex flex-column align-items-center p-3 m-auto text-white'>
+                                                    <div className=' d-flex flex-column align-items-center text-center p-3 m-auto text-white'>
 
                                                         <h1 className='text-danger p-1 border border-danger border-end-0 border-start-0 rounded-3'>About Me</h1>
 
@@ -356,7 +360,6 @@ const Feedback = () => {
                                                         <h1>Ashish Kuldeep</h1>
 
                                                         <div>
-
                                                             <a href="https://www.linkedin.com/in/ashish-kuldeep-09b96018b" ><img src="https://cdn1.iconfinder.com/data/icons/social-media-rounded-corners/512/Rounded_Linkedin2_svg-512.png" className="logos" alt="Linkedin" />
                                                             </a>
 
@@ -364,17 +367,19 @@ const Feedback = () => {
 
                                                             <a href="https://mobile.twitter.com/ashishkuldeep23" ><img src="https://cdn1.iconfinder.com/data/icons/social-media-rounded-corners/512/Rounded_Twitter5_svg-512.png" className="logos" alt="Tiwtter" /></a>
 
-                                                            <a href="https://www.youtube.com/"  rel="noopener" ><img src="https://cdn1.iconfinder.com/data/icons/social-media-rounded-corners/512/Rounded_Youtube3_svg-512.png" className="logos" alt="Youtube" /></a>
+                                                            <a href="https://www.youtube.com/" rel="noopener" ><img src="https://cdn1.iconfinder.com/data/icons/social-media-rounded-corners/512/Rounded_Youtube3_svg-512.png" className="logos" alt="Youtube" /></a>
                                                         </div>
+
+
+                                                        <div>
+                                                            <h4>I am learning web development.</h4>
+                                                            <h4>I am fallowing MERN Stack.</h4>
+                                                            <h4>Fallow me on social media.</h4>
+                                                        </div>
+
 
                                                     </div>
 
-                                                </div>
-
-                                                <div className=" bg-success text-center col-12 col-md-8 m-auto border border-warning border-top-0 rounded text-white aboutMeAk" >
-                                                    <h4>I am learning web development.</h4>
-                                                    <h4>I am fallowing MERN Stack</h4>
-                                                    <h4>Fallow me on social media</h4>
                                                 </div>
 
                                             </div>
@@ -384,9 +389,10 @@ const Feedback = () => {
                                         </div>
 
 
+
                                         {/* show all feedback div ----> */}
 
-                                        <div className="show_all_feeds_topmost_div col-12">
+                                        <div className="show_all_feeds_topmost_div col-12" >
 
                                             <div ref={refFeedClickBtn} className="show_All_FeedBack_main">
                                                 <h1>Click on Show Button to see all Feedbacks</h1>
@@ -419,7 +425,7 @@ const Feedback = () => {
 
                         {/* collapse cancel btn ------> (again) */}
                         <div className='d-flex justify-content-center '>
-                            <a className="btn btn-primary " data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <a className="btn btn-primary bg-danger " data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                                 Close Feedback Section
                             </a>
                         </div>

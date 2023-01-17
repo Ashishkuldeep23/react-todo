@@ -17,6 +17,8 @@
     border-bottom: 0;
 
     border-top: 7px solid darkblue;
+
+
     
 }
 
@@ -47,8 +49,14 @@
     font-size: 0.8rem;
     font-weight: 700;
     color: blueviolet;
-    display: flex;
-    align-items: flex-end;
+    /* display: flex;
+    align-items: flex-end; */
+    margin-bottom: -1.5vh;
+    margin-top: -0.5vh;
+
+    position: relative;
+    top:3.5vh;
+
 }
 
 
@@ -138,6 +146,10 @@
 
     #todoImag{
         width: 35vh;
+    }
+
+    .dayAgo{
+        top: 2.5vh;
     }
     
 }

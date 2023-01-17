@@ -40,6 +40,9 @@
     border: 2px solid red;
     border-radius: 10vh;
 
+    overflow-y:scroll;
+    overflow-x:hidden;
+
     padding:0 ;
 
 }
@@ -263,6 +266,21 @@
 }
 
 /* Below is used in user feedback result (Ends) */
+
+
+
+
+/* KeyFrame -----> */
+@media (max-width : 576px) {
+    
+    .feed_body{
+        height: 93.7vh;
+        border-radius: 5vh;
+
+    }
+    
+}
+
 
 
 

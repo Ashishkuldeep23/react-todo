@@ -207,6 +207,9 @@ const Todo = () => {
                                         <i className="fa-solid fa-delete-left"></i>
                                     </button>
                                 </div>
+                                
+                                {/* Below line for how many ago , curEle.id is storing time when created
+                                <span className='dayAgo'><small>3 H Ago</small></span> */}
 
 
                             </div>
