@@ -90,7 +90,7 @@ const Todo = () => {
     // // // Delete single item --->
     function deleteOneItem(id , lock ) {
 
-        console.log(id , lock)
+        // console.log(id , lock)
 
         if(lock === undefined || lock === "false") {
             actualDeleteOne(id)
