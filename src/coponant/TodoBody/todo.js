@@ -78,17 +78,37 @@ const Todo = () => {
 
 
 
-    // let ask = () => {
-    //     const confirmBox = window.confirm(
-    //         "Do you really want to delete this Task?"
-    //     )
-    //     return confirmBox
-    // }
+    let ask = () => {
+        const confirmBox = window.confirm(
+            "Do you really want to delete this Task?"
+        )
+        return confirmBox
+    }
 
 
 
     // // // Delete single item --->
-    function deleteOneItem(idGeted) {
+    function deleteOneItem(id , lock ) {
+
+        console.log(id , lock)
+
+        if(lock === undefined || lock === "false") {
+            actualDeleteOne(id)
+        }else if (lock==="true"){
+
+            let askToUser = ask()
+
+            if(askToUser){
+                actualDeleteOne(id)
+            }
+
+        }
+
+    }
+
+
+    function actualDeleteOne(idGeted){
+
         // // // Below is working fine for delete any task ----->
         const updatedItems = items.filter((curEle) => {
             return curEle.id !== idGeted
@@ -317,8 +337,8 @@ const Todo = () => {
                                                 </div>
 
 
-                                                <div className="delete_one mx-auto px-1" onClick={() => { deleteOneItem(curEle.id) }} >
-                                                    <div className="dropdown-content_delone " onClick={() => { deleteOneItem(curEle.id) }} >
+                                                <div className="delete_one mx-auto px-1" onClick={() => { deleteOneItem(curEle.id , curEle.lock) }} >
+                                                    <div className="dropdown-content_delone " onClick={() => { deleteOneItem(curEle.id , curEle.lock) }} >
                                                         <p>Delete</p>
                                                     </div>
 
