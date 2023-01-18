@@ -27,6 +27,8 @@ const Todo = () => {
 
     const [toggleBtn, setToggleBtn] = useState(false)
 
+    // const [lockTask , setLockTask] =  useState("")
+
     // // // add items function
     function addItems() {
         if (!newTask) {
@@ -52,7 +54,7 @@ const Todo = () => {
             const myNewTask = {
                 id: new Date().getTime().toString(),
                 name: newTask,
-                date: new Date()
+                date: new Date(),
             }
             setItems([...items, myNewTask])
             setNewTask("")
@@ -76,9 +78,18 @@ const Todo = () => {
 
 
 
+    // let ask = () => {
+    //     const confirmBox = window.confirm(
+    //         "Do you really want to delete this Task?"
+    //     )
+    //     return confirmBox
+    // }
+
+
 
     // // // Delete single item --->
     function deleteOneItem(idGeted) {
+        // // // Below is working fine for delete any task ----->
         const updatedItems = items.filter((curEle) => {
             return curEle.id !== idGeted
         })
@@ -89,7 +100,40 @@ const Todo = () => {
 
     // // // // Removing all Tasks -->
     const removeAllTasks = () => {
-        setItems([]);
+
+        let check = items.filter((curEle) => {
+            if (curEle.lock === "true") {
+                // console.log(curEle.name,"=>",curEle.lock)
+                return curEle
+            }
+
+            return ""
+
+        })
+
+        setItems([...check]);
+    }
+
+
+    // // // // Lock one task ----->
+
+    const lockThisTask = (id) => {
+
+        const makeLock = items.map((curEle) => {
+
+            if (curEle.id === id && (!curEle.lock || curEle.lock === "false")) {
+                return { ...curEle, lock: "true" }
+            }
+
+            if (curEle.id === id && curEle.lock) {
+                return { ...curEle, lock: "false" }
+            }
+            return curEle
+
+        })
+
+        setItems(makeLock)
+
     }
 
 
@@ -105,7 +149,6 @@ const Todo = () => {
     // // // Time how many ago written a task.
     const timeDiffFunc = (date) => {
 
-
         let outPut = ""
 
         let date1 = new Date()    // // Current time
@@ -116,9 +159,9 @@ const Todo = () => {
         // console.log(Difference_In_Time)
 
         var Difference_In_Hour = Difference_In_Time / (1000 * 3600);
-        let rounded = Math.round(Difference_In_Hour)
+        let rounded = Difference_In_Hour.toFixed(1)
 
-        if (rounded > 2) {
+        if (rounded > 1) {
             outPut = rounded + " H Ago"
         }
 
@@ -195,7 +238,7 @@ const Todo = () => {
 
                                 <div className=' d-flex '>
 
-                                    <div className='update_main mx-auto' >
+                                    <div className='update_main mx-auto px-1' >
                                         <div className="dropdown-content_update">
                                             <p className='bg-success'>Update</p>
                                         </div>
@@ -205,8 +248,18 @@ const Todo = () => {
                                         </button>
                                     </div>
 
+                                    <div>
 
-                                    <div className="delete_one mx-auto" >
+                                        <button type="button" className="btn btn-outline-dark  btn-sm"  >
+                                            {
+                                                ("true") ? <i className="fa-solid fa-lock"></i> : <i className="fa-solid fa-lock-open"></i>
+                                            }
+                                        </button>
+
+                                    </div>
+
+
+                                    <div className="delete_one mx-auto px-1" >
                                         <div className="dropdown-content_delone ">
                                             <p>Delete</p>
                                         </div>
@@ -241,9 +294,9 @@ const Todo = () => {
 
 
                                             <div className=' d-flex '>
-                                            
 
-                                                <div className='update_main mx-auto' onClick={() => { updateTask(curEle.id, curEle.name) }}>
+
+                                                <div className='update_main mx-auto px-1' onClick={() => { updateTask(curEle.id, curEle.name) }}>
                                                     <div className="dropdown-content_update" onClick={() => { updateTask(curEle.id, curEle.name) }}>
                                                         <p className='bg-success'>Update</p>
                                                     </div>
@@ -253,8 +306,18 @@ const Todo = () => {
                                                     </button>
                                                 </div>
 
+                                                <div>
 
-                                                <div className="delete_one mx-auto" onClick={() => { deleteOneItem(curEle.id) }} >
+                                                    <button type="button" className="btn btn-outline-dark  btn-sm" onClick={() => { lockThisTask(curEle.id) }} >
+                                                        {
+                                                            (curEle.lock === "true") ? <i className="fa-solid fa-lock"></i> : <i className="fa-solid fa-lock-open"></i>
+                                                        }
+                                                    </button>
+
+                                                </div>
+
+
+                                                <div className="delete_one mx-auto px-1" onClick={() => { deleteOneItem(curEle.id) }} >
                                                     <div className="dropdown-content_delone " onClick={() => { deleteOneItem(curEle.id) }} >
                                                         <p>Delete</p>
                                                     </div>
@@ -288,7 +351,7 @@ const Todo = () => {
 
                     <div className="clear d-flex justify-content-center align-items-center bg-warning">
 
-                        <div className="delete_one this_to_all_del" onClick={removeAllTasks} >
+                        <div className="delete_one " onClick={removeAllTasks} >
 
                             <div className="dropdown-content_delone this_to_all_del " onClick={removeAllTasks} >
                                 <p>Delete All</p>

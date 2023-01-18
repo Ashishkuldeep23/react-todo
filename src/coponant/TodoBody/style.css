@@ -40,8 +40,6 @@
 
 
 
-
-
 .dayAgo{
     font-size: 0.8rem;
     font-weight: 700;
@@ -67,7 +65,7 @@
     text-align: center;
     z-index: 1;
 
-    width: 100%;
+    width: 80%;
     /* height: 100%; */
 
     justify-content: center;
@@ -76,8 +74,11 @@
 }
 
 
+
+
 .this_to_all_del{
-    height: 98%;
+    height: 100%;
+    width: 100%;
 }
 
 .dropdown-content_update{
