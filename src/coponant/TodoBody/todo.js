@@ -51,8 +51,8 @@ const Todo = () => {
         else {
             const myNewTask = {
                 id: new Date().getTime().toString(),
-                name: newTask ,
-                date : new Date()
+                name: newTask,
+                date: new Date()
             }
             setItems([...items, myNewTask])
             setNewTask("")
@@ -110,11 +110,11 @@ const Todo = () => {
 
         let date1 = new Date()    // // Current time
         let date2 = new Date(date)   // // When task created
-        
+
         var Difference_In_Time = date1.getTime() - date2.getTime()
-        
+
         // console.log(Difference_In_Time)
-        
+
         var Difference_In_Hour = Difference_In_Time / (1000 * 3600);
         let rounded = Math.round(Difference_In_Hour)
 
@@ -159,7 +159,7 @@ const Todo = () => {
                         <img src="https://i.pinimg.com/564x/3c/6d/eb/3c6debf67d550119ae777083c4b5b4ed.jpg" id='todoImag' alt="Todo" />
                     </div>
 
-                    
+
                     <h1 className='text-white'>Todo ( My schedule is )</h1>
 
                     {/* Input section */}
@@ -187,37 +187,40 @@ const Todo = () => {
 
                     <div className="items ">
 
-                        <div className=' single_item d-flex justify-content-between border border-info rounded-2  p-2'>
-                            <p className='my-auto'><strong>0.</strong> Dummy Task</p>
+                        <div className=' single_item d-flex justify-content-between border border-info rounded-2  px-2'>
+                            <p ><strong>0.</strong> Dummy Task</p>
 
-                            <div className='item_icons d-sm-flex '>
+                            <div className=' d-flex flex-column '>
+
+
+                                <div className=' d-flex '>
+
+                                    <div className='update_main mx-auto' >
+                                        <div className="dropdown-content_update">
+                                            <p className='bg-success'>Update</p>
+                                        </div>
+
+                                        <button id='updete' type="button" className="btn btn-outline-success btn-sm" >
+                                            <i className="fa-solid fa-file-pen"></i>
+                                        </button>
+                                    </div>
+
+
+                                    <div className="delete_one mx-auto" >
+                                        <div className="dropdown-content_delone ">
+                                            <p>Delete</p>
+                                        </div>
+
+                                        <button type="button" className="btn btn-outline-danger btn-sm">
+                                            <i className="fa-solid fa-delete-left"></i>
+                                        </button>
+                                    </div>
+
+                                </div>
+
 
                                 {/* Below line for how many ago , curEle.id is storing time when created */}
-                                <span className='dayAgo'><small>3 H Ago(Time)</small></span>
-
-                                <div className='update_main mx-auto' >
-                                    <div className="dropdown-content_update">
-                                        <p className='bg-success'>Update</p>
-                                    </div>
-
-                                    <button id='updete' type="button" className="btn btn-outline-success btn-sm" >
-                                        <i className="fa-solid fa-file-pen"></i>
-                                    </button>
-                                </div>
-
-
-                                <div className="delete_one mx-auto" >
-                                    <div className="dropdown-content_delone ">
-                                        <p>Delete</p>
-                                    </div>
-
-                                    <button type="button" className="btn btn-outline-danger btn-sm">
-                                        <i className="fa-solid fa-delete-left"></i>
-                                    </button>
-                                </div>
-                                
-                                {/* Below line for how many ago , curEle.id is storing time when created
-                                <span className='dayAgo'><small>3 H Ago</small></span> */}
+                                <span className='dayAgo'><small>3 H Ago</small></span>
 
 
                             </div>
@@ -231,34 +234,41 @@ const Todo = () => {
                                 return (
 
 
-                                    <div className=' single_item d-flex justify-content-between border border-info rounded-2  p-2' key={curEle.id}>
-                                        <p className='my-auto'><strong>{index + 1}.</strong> {curEle.name}</p>
+                                    <div className=' single_item d-flex justify-content-between border border-info rounded-2  px-2' key={curEle.id}>
+                                        <p ><strong>{index + 1}.</strong> {curEle.name}</p>
 
-                                        <div className='item_icons d-sm-flex '>
+                                        <div className=' d-flex flex-column'>
+
+
+                                            <div className=' d-flex '>
+                                            
+
+                                                <div className='update_main mx-auto' onClick={() => { updateTask(curEle.id, curEle.name) }}>
+                                                    <div className="dropdown-content_update" onClick={() => { updateTask(curEle.id, curEle.name) }}>
+                                                        <p className='bg-success'>Update</p>
+                                                    </div>
+
+                                                    <button id='updete' type="button" className="btn btn-outline-success btn-sm" >
+                                                        <i className="fa-solid fa-file-pen"></i>
+                                                    </button>
+                                                </div>
+
+
+                                                <div className="delete_one mx-auto" onClick={() => { deleteOneItem(curEle.id) }} >
+                                                    <div className="dropdown-content_delone " onClick={() => { deleteOneItem(curEle.id) }} >
+                                                        <p>Delete</p>
+                                                    </div>
+
+                                                    <button type="button" className="btn btn-outline-danger btn-sm">
+                                                        <i className="fa-solid fa-delete-left"></i>
+                                                    </button>
+                                                </div>
+
+                                            </div>
+
 
                                             {/* Below line for how many ago , curEle.id is storing time when created */}
                                             <span className=' dayAgo'><small>{timeDiffFunc(curEle.date)}</small></span>
-
-                                            <div className='update_main mx-auto' onClick={() => { updateTask(curEle.id, curEle.name) }}>
-                                                <div className="dropdown-content_update" onClick={() => { updateTask(curEle.id, curEle.name) }}>
-                                                    <p className='bg-success'>Update</p>
-                                                </div>
-
-                                                <button id='updete' type="button" className="btn btn-outline-success btn-sm" >
-                                                    <i className="fa-solid fa-file-pen"></i>
-                                                </button>
-                                            </div>
-
-
-                                            <div className="delete_one mx-auto" onClick={() => { deleteOneItem(curEle.id) }} >
-                                                <div className="dropdown-content_delone " onClick={() => { deleteOneItem(curEle.id) }} >
-                                                    <p>Delete</p>
-                                                </div>
-
-                                                <button type="button" className="btn btn-outline-danger btn-sm">
-                                                    <i className="fa-solid fa-delete-left"></i>
-                                                </button>
-                                            </div>
 
 
                                         </div>
