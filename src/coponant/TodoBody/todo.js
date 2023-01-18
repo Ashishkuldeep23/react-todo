@@ -236,7 +236,7 @@ const Todo = () => {
                             <div className=' d-flex flex-column '>
 
 
-                                <div className=' d-flex '>
+                                <div className=' d-flex flex-wrap'>
 
                                     <div className='update_main mx-auto px-1' >
                                         <div className="dropdown-content_update">
@@ -293,7 +293,7 @@ const Todo = () => {
                                         <div className=' d-flex flex-column'>
 
 
-                                            <div className=' d-flex '>
+                                            <div className=' d-flex flex-wrap'>
 
 
                                                 <div className='update_main mx-auto px-1' onClick={() => { updateTask(curEle.id, curEle.name) }}>
