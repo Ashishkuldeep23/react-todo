@@ -31,11 +31,14 @@
 
 
 .single_item:hover{
-    background-color: rgba(0, 255, 183, 0.403);
+    background-color: rgb(71, 249, 198) !important;
     font-size: 1.1rem;
     transform: scaleY(1.1);
-    border-left: 4px solid darkblue !important;
-    border-right: 4px solid darkblue !important;
+    border-left: 7px solid darkblue !important;
+    border-right: 7px solid darkblue !important;
+    border-top: 2px solid darkblue !important;
+    border-bottom: 2px solid darkblue !important;
+    border-radius: 3vh !important;
 }
 
 

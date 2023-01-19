@@ -234,7 +234,9 @@ const Todo = () => {
                         <span className="input-group-text round_btm_input bg-warning">
 
                             {
-                                toggleBtn ? <i className="fa-solid fa-file-pen" onClick={addItems} ></i> : <input type="button" value="Add" onClick={addItems} />
+                                
+
+                                toggleBtn ? <button> <i className="fa-solid fa-file-pen" onClick={addItems} ></i>  </button>  : <button> <i className="fa-solid fa-square-plus" onClick={addItems}></i> </button>
                             }
 
                         </span>
@@ -244,17 +246,20 @@ const Todo = () => {
                     {/* Item section */}
 
 
-                    {/* Dummy item first */}
 
-                    <div className="items ">
+                    <div className="items bg-warning">
 
-                        <div className=' single_item d-flex justify-content-between border border-info rounded-2  px-2'>
+
+                        {/* Dummy item first */}
+
+
+                        <div className=' single_item bg-white d-block d-sm-flex justify-content-between border border-info rounded-2 my-2 px-2'>
                             <p ><strong>0.</strong> Dummy Task</p>
 
-                            <div className=' d-flex flex-column '>
+                            <div className=' d-flex align-items-end flex-column-reverse '>
 
 
-                                <div className=' d-flex flex-wrap'>
+                                <div className=' d-flex '>
 
                                     <div className='update_main mx-auto px-1' >
                                         <div className="dropdown-content_update">
@@ -313,13 +318,13 @@ const Todo = () => {
                                 return (
 
 
-                                    <div className=' single_item d-flex justify-content-between border border-info rounded-2  px-2' key={curEle.id}>
+                                    <div className=' single_item bg-white d-block d-sm-flex justify-content-between border border-info rounded-2 my-2 px-2' key={curEle.id}>
                                         <p ><strong>{index + 1}.</strong> {curEle.name}</p>
 
-                                        <div className=' d-flex flex-column'>
+                                        <div className='d-flex align-items-end flex-column-reverse  '>
 
 
-                                            <div className=' d-flex flex-wrap'>
+                                            <div className=' d-flex '>
 
 
                                                 <div className='update_main mx-auto px-1' onClick={() => { updateTask(curEle.id, curEle.name) }}>
