@@ -44,6 +44,26 @@
 
 }
 
+
+
+.feed_body::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+}
+  
+.feed_body::-webkit-scrollbar-track {
+    background: black;        /* color of the tracking area */
+}
+  
+.feed_body::-webkit-scrollbar-thumb {
+    /* background-color: blue;    color of the scroll thumb */
+  
+    background-image: linear-gradient(180deg , cyan , violet);
+  
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid black;  /* creates padding around scroll thumb */
+}
+  
+
 #feed_form{
     box-shadow: 20px 30px 30px black;
 }
