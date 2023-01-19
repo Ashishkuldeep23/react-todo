@@ -236,7 +236,7 @@ const Todo = () => {
                             {
                                 
 
-                                toggleBtn ? <button> <i className="fa-solid fa-file-pen" onClick={addItems} ></i>  </button>  : <button> <i className="fa-solid fa-square-plus" onClick={addItems}></i> </button>
+                                toggleBtn ? <button className='bg-success text-white'> <i className="fa-solid fa-file-pen" onClick={addItems} ></i>  </button>  : <button className='bg-success text-white' > <i className="fa-solid fa-square-plus" onClick={addItems}></i> </button>
                             }
 
                         </span>

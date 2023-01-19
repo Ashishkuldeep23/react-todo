@@ -2,7 +2,7 @@
 
 
 .todo_main_body{
-    margin-top: 12vh;
+    margin-top: 15vh;
 }
 
 
@@ -39,6 +39,7 @@
     border-top: 2px solid darkblue !important;
     border-bottom: 2px solid darkblue !important;
     border-radius: 3vh !important;
+    margin: 0.5vh;
 }
 
 
