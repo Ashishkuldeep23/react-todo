@@ -21,14 +21,16 @@
 
 }
 
-
+.info{
+    width: 90%;
+}
 
 .info_content{
-    width: 85%;
+    text-align: start;
     background-color: black;    
     color: white;
     margin: auto;
 
     z-index: 100;
- 
+
 }
