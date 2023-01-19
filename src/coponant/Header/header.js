@@ -55,7 +55,7 @@ const Header = () => {
                   Your tasks are stored in your browser's localstorage , so don't worry about that (<strong>Privacy First</strong>).
                 </li>
 
-                <p className='text-center '> <i class="fa-brands fa-youtube"></i> -: <a  href="https://www.youtube.com/" rel="noreferrer" target={"_blank"}>https://www.youtube.com/</a></p>
+                <p className='text-center '> <i className="fa-brands fa-youtube"></i> -: <a  href="https://www.youtube.com/" rel="noreferrer" target={"_blank"}>https://www.youtube.com/</a></p>
               </ol>
             </div>
           </div>

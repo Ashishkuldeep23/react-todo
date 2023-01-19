@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import "./style.css"
-
+import done from "./done.mp3"
+import error from "./error.mp3"
 
 // // // Get the local storage data back ----->
 
@@ -27,12 +28,12 @@ const Todo = () => {
 
     const [toggleBtn, setToggleBtn] = useState(false)
 
-    // const [lockTask , setLockTask] =  useState("")
 
     // // // add items function
     function addItems() {
         if (!newTask) {
-            alert('Please give some task to add!')
+            new Audio(error).play()
+            // alert('Please give some task to add!')
         }
         else if (newTask && toggleBtn) {
             setItems(
@@ -129,6 +130,10 @@ const Todo = () => {
 
         })
 
+ 
+        let a = new Audio(done)
+        a.play()
+
         setItems([...check]);
     }
 
@@ -151,7 +156,6 @@ const Todo = () => {
         })
 
         setItems(makeLock)
-
     }
 
 
