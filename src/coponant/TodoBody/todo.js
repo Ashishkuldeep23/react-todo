@@ -88,17 +88,16 @@ const Todo = () => {
 
 
     // // // Delete single item --->
-    function deleteOneItem(id , lock ) {
+    function deleteOneItem(id, lock) {
 
         // console.log(id , lock)
-
-        if(lock === undefined || lock === "false") {
+        if (lock === undefined || lock === "false") {
             actualDeleteOne(id)
-        }else if (lock==="true"){
+        } else if (lock === "true") {
 
             let askToUser = ask()
 
-            if(askToUser){
+            if (askToUser) {
                 actualDeleteOne(id)
             }
 
@@ -107,8 +106,7 @@ const Todo = () => {
     }
 
 
-    function actualDeleteOne(idGeted){
-
+    function actualDeleteOne(idGeted) {
         // // // Below is working fine for delete any task ----->
         const updatedItems = items.filter((curEle) => {
             return curEle.id !== idGeted
@@ -268,9 +266,17 @@ const Todo = () => {
                                         </button>
                                     </div>
 
-                                    <div>
+                                    <div className='lock_main'  >
 
-                                        <button type="button" className="btn btn-outline-dark  btn-sm"  >
+                                        <div className="dropdown-content_lock" >
+                                            <p className='bg-dark text-white'>
+                                                {
+                                                    ("true") ? "Locked" : "Lock"
+                                                }
+                                            </p>
+                                        </div>
+
+                                        <button type="button" className="btn btn-outline-dark  btn-sm" >
                                             {
                                                 ("true") ? <i className="fa-solid fa-lock"></i> : <i className="fa-solid fa-lock-open"></i>
                                             }
@@ -326,7 +332,16 @@ const Todo = () => {
                                                     </button>
                                                 </div>
 
-                                                <div>
+
+                                                <div className='lock_main' onClick={() => { lockThisTask(curEle.id) }}  >
+
+                                                    <div className="dropdown-content_lock" onClick={() => { lockThisTask(curEle.id) }} >
+                                                        <p className='bg-dark text-white'>
+                                                            {
+                                                                (curEle.lock === "true") ? "Locked" : "Lock"
+                                                            }
+                                                        </p>
+                                                    </div>
 
                                                     <button type="button" className="btn btn-outline-dark  btn-sm" onClick={() => { lockThisTask(curEle.id) }} >
                                                         {
@@ -337,8 +352,8 @@ const Todo = () => {
                                                 </div>
 
 
-                                                <div className="delete_one mx-auto px-1" onClick={() => { deleteOneItem(curEle.id , curEle.lock) }} >
-                                                    <div className="dropdown-content_delone " onClick={() => { deleteOneItem(curEle.id , curEle.lock) }} >
+                                                <div className="delete_one mx-auto px-1" onClick={() => { deleteOneItem(curEle.id, curEle.lock) }} >
+                                                    <div className="dropdown-content_delone " onClick={() => { deleteOneItem(curEle.id, curEle.lock) }} >
                                                         <p>Delete</p>
                                                     </div>
 

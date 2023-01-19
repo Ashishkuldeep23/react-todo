@@ -48,12 +48,12 @@
 }
 
 
-.update_main,.delete_one {
+.update_main,.delete_one , .lock_main {
     position: relative;
     display: inline-block;
 }
 
-.dropdown-content_delone , .dropdown-content_update {
+.dropdown-content_delone , .dropdown-content_update , .dropdown-content_lock {
     display: none;
     position: absolute;
     color: white;
@@ -89,6 +89,10 @@
     background-color: #dc3545;
 }
 
+.dropdown-content_lock{
+    background-color: black;
+    color: white;
+}
 
 
 
@@ -97,6 +101,10 @@
 }
 
 .delete_one:hover .dropdown-content_delone{
+    display: flex;
+}
+
+.lock_main:hover .dropdown-content_lock{
     display: flex;
 }
 
