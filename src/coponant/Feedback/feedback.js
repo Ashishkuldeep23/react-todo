@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react'
 import "./style.css"
-
+import done from "./done.mp3"
 
 
 
@@ -232,7 +232,8 @@ const Feedback = () => {
 
             // // // setting inner html to outPut div
             document.getElementById("all_feedback").innerHTML = temp
-
+            new Audio(done).play()
+            
             
 
             // // // After successfull fetched data scrolling window till div --->
@@ -360,14 +361,14 @@ const Feedback = () => {
                                                         <h1>Ashish Kuldeep</h1>
 
                                                         <div>
-                                                            <a href="https://www.linkedin.com/in/ashish-kuldeep-09b96018b" target={"_blank"} ><img src="https://cdn1.iconfinder.com/data/icons/social-media-rounded-corners/512/Rounded_Linkedin2_svg-512.png" className="logos" alt="Linkedin" />
+                                                            <a href="https://www.linkedin.com/in/ashish-kuldeep-09b96018b" rel="noreferrer" target={"_blank"} ><img src="https://cdn1.iconfinder.com/data/icons/social-media-rounded-corners/512/Rounded_Linkedin2_svg-512.png" className="logos" alt="Linkedin" />
                                                             </a>
 
-                                                            <a href="https://github.com/Ashishkuldeep23" target={"_blank"} ><img src="https://cdn3.iconfinder.com/data/icons/social-media-2253/25/Group-512.png" className="logos" alt="Github" /></a>
+                                                            <a href="https://github.com/Ashishkuldeep23" rel="noreferrer" target={"_blank"} ><img src="https://cdn3.iconfinder.com/data/icons/social-media-2253/25/Group-512.png" className="logos" alt="Github" /></a>
 
-                                                            <a href="https://mobile.twitter.com/ashishkuldeep23" target={"_blank"}><img src="https://cdn1.iconfinder.com/data/icons/social-media-rounded-corners/512/Rounded_Twitter5_svg-512.png" className="logos" alt="Tiwtter" /></a>
+                                                            <a href="https://mobile.twitter.com/ashishkuldeep23" rel="noreferrer" target={"_blank"}><img src="https://cdn1.iconfinder.com/data/icons/social-media-rounded-corners/512/Rounded_Twitter5_svg-512.png" className="logos" alt="Tiwtter" /></a>
 
-                                                            <a href="https://www.youtube.com/" rel="noopener" target={"_blank"} ><img src="https://cdn1.iconfinder.com/data/icons/social-media-rounded-corners/512/Rounded_Youtube3_svg-512.png" className="logos" alt="Youtube" /></a>
+                                                            <a href="https://www.youtube.com/" rel="noreferrer" target={"_blank"} ><img src="https://cdn1.iconfinder.com/data/icons/social-media-rounded-corners/512/Rounded_Youtube3_svg-512.png" className="logos" alt="Youtube" /></a>
                                                         </div>
 
 

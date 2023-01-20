@@ -32,6 +32,7 @@
 
 .feed_body{
     overflow-y: scroll;
+    overflow-x: hidden;
     height: 94.5vh;
     /* height: auto; */
     width: 100vw;

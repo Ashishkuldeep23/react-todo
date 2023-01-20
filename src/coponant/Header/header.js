@@ -55,6 +55,10 @@ const Header = () => {
                   Your tasks are stored in your browser's localstorage , so don't worry about that (<strong>Privacy First</strong>).
                 </li>
 
+                <li>
+                  You can write your name in front of ToDo input and hit Enter Key After that your name is visible. (<strong>Your Name , Hit Enter</strong>)
+                </li>
+
                 <p className='text-center '> <i className="fa-brands fa-youtube"></i> -: <a  href="https://www.youtube.com/" rel="noreferrer" target={"_blank"}>https://www.youtube.com/</a></p>
               </ol>
             </div>

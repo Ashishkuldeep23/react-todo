@@ -6,6 +6,20 @@
 }
 
 
+#userNameInput{
+    width: 30vh;
+    border-radius: 2vh;
+    color: darkblue;
+    padding: 1vh;
+    font-size: 1.4rem;
+}
+
+#userNamePaste{
+    color: black;
+    border-bottom: 2px solid black;
+    border-radius: 2vh;
+}
+
 .round_btm_input{
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;

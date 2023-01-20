@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import "./style.css"
 import done from "./done.mp3"
 import error from "./error.mp3"
+import oneDelete from "./oneDelete.mp3"
 
 // // // Get the local storage data back ----->
 
@@ -41,7 +42,6 @@ const Todo = () => {
                     if (curEle.id === isEditTask) {
                         return { ...curEle, name: newTask }
                     }
-
                     return curEle;
                 })
             )
@@ -110,6 +110,9 @@ const Todo = () => {
     function actualDeleteOne(idGeted) {
         // // // Below is working fine for delete any task ----->
         const updatedItems = items.filter((curEle) => {
+
+            new Audio(oneDelete).play()
+
             return curEle.id !== idGeted
         })
         setItems(updatedItems)
@@ -207,13 +210,40 @@ const Todo = () => {
 
 
 
+    // // // // Experimet 
+
+    const userName = () =>{
+        let name = document.getElementById("userNameInput").value.trim()
+        // alert(name)
+
+        localStorage.setItem("UserName" , name)
+
+        document.getElementById("userNamePaste").innerText = name+"'s"
+
+        document.getElementById("userNameInput").style.display = "none"
+
+    }
+
+
+    const checkUserName =() =>{
+
+        // console.log("Ok")
+        let userName = localStorage.getItem("UserName")
+        if(userName){
+            document.getElementById("userNamePaste").innerText = userName+"'s"
+            document.getElementById("userNameInput").style.display = "none"
+        }
+    }
+
+
+
 
     // // // UI starts here -------------->
 
     return (
 
 
-        <div className="container min-vw-100  todo_main_body">
+        <div onLoad={()=>{checkUserName()}} className="container min-vw-100  todo_main_body">
 
             <div className="row  ">
 
@@ -225,11 +255,13 @@ const Todo = () => {
                     </div>
 
 
-                    <h1 className='text-white'>Todo ( My schedule is )</h1>
+                    <h1 className='text-white text-center'> <input id='userNameInput' type="text" placeholder='Your Name &#x23CE;' onKeyDown={(e) => {
+                                if (e.keyCode === 13) { userName() }
+                            }} /> Todo ( <strong><span id='userNamePaste' ></span></strong> schedule is )</h1>
 
                     {/* Input section */}
                     <div className="input-group ">
-                        <input className="form-control round_btm_input bg-info text-white" placeholder='✍️Write your task!' id='mainInput' type="text"
+                        <input className="form-control bg-info text-white round_btm_input" placeholder='✍️Write your task!' id='mainInput' type="text"
                             value={newTask} onChange={(e) => { setNewTask(e.target.value) }}
                             onKeyDown={(e) => {
                                 if (e.keyCode === 13) { addItems() }
