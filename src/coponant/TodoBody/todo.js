@@ -216,23 +216,39 @@ const Todo = () => {
         let name = document.getElementById("userNameInput").value.trim()
         // alert(name)
 
-        localStorage.setItem("UserName" , name)
+        const nameReg = (/^[a-zA-Z]+([\s][a-zA-Z]+)*$/);
 
-        document.getElementById("userNamePaste").innerText = name+"'s"
+        // alert(nameReg.test(name))
 
-        document.getElementById("userNameInput").style.display = "none"
+        if(name === ""){
+           return alert("Name not given!")
+        }
+
+
+        if(!nameReg.test(name)){
+           return alert("Given name is Invalid!\nOnly (a-z , A-Z and space) is valid.")
+        }
+
+        if( name !== "" && nameReg.test(name) ){
+            localStorage.setItem("UserName" , name)
+            document.getElementById("userNamePaste").innerText = name+"'s"
+            document.getElementById("userNameDiv").style.display = "none"
+        }
+        
+        
 
     }
 
 
-    const checkUserName =() =>{
+    const checkUserNameOnLoad =() =>{
 
-        // console.log("Ok")
         let userName = localStorage.getItem("UserName")
+        // console.log(userName)
         if(userName){
             document.getElementById("userNamePaste").innerText = userName+"'s"
-            document.getElementById("userNameInput").style.display = "none"
+            document.getElementById("userNameDiv").style.display = "none"
         }
+        
     }
 
 
@@ -243,7 +259,7 @@ const Todo = () => {
     return (
 
 
-        <div onLoad={()=>{checkUserName()}} className="container min-vw-100  todo_main_body">
+        <div onLoad={()=>{checkUserNameOnLoad()}} className="container min-vw-100  todo_main_body">
 
             <div className="row  ">
 
@@ -255,9 +271,25 @@ const Todo = () => {
                     </div>
 
 
-                    <h1 className='text-white text-center'> <input id='userNameInput' type="text" placeholder='Your Name &#x23CE;' onKeyDown={(e) => {
-                                if (e.keyCode === 13) { userName() }
-                            }} /> Todo ( <strong><span id='userNamePaste' ></span></strong> schedule is )</h1>
+                    <div className='d-flex  flex-column'>
+
+                        <div id='userNameDiv'>
+                            <input
+                                id='userNameInput' type="text" placeholder='Your Name &#x23CE;' onKeyDown={(e) => {
+                                    if (e.keyCode === 13) { userName() }
+                                }} />
+
+                            <input type="button" value="ENTER" id='userNameEnter' onClick={userName} />
+                        </div>
+
+                        <h1 className='text-white text-center'> Todo ( <strong><span id='userNamePaste' ></span></strong> schedule is )</h1>
+
+                    </div>
+
+                   
+
+
+
 
                     {/* Input section */}
                     <div className="input-group ">
