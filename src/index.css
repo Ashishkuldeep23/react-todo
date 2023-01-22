@@ -20,7 +20,8 @@ body {
 
 
 *::selection{
-  color: transparent;
+  color: red;
+  background-color: black;
   /* background-color: transparent; */
 }
 
