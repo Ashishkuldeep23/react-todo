@@ -29,6 +29,8 @@ const Todo = () => {
 
     const [toggleBtn, setToggleBtn] = useState(false)
 
+    const [notiDate, setNotiDate] = useState("Date")
+
 
     // // // add items function
     function addItems() {
@@ -133,7 +135,7 @@ const Todo = () => {
 
         })
 
- 
+
         let a = new Audio(done)
         a.play()
 
@@ -210,9 +212,9 @@ const Todo = () => {
 
 
 
-    // // // // Experimet 
+    // // // // user name check and set (1st section )------------->
 
-    const userName = () =>{
+    const userName = () => {
         let name = document.getElementById("userNameInput").value.trim()
         // alert(name)
 
@@ -220,36 +222,138 @@ const Todo = () => {
 
         // alert(nameReg.test(name))
 
-        if(name === ""){
-           return alert("Name not given!")
+        if (name === "") {
+            return alert("Name not given!")
         }
 
 
-        if(!nameReg.test(name)){
-           return alert("Given name is Invalid!\nOnly (a-z , A-Z and space) is valid.")
+        if (!nameReg.test(name)) {
+            return alert("Given name is Invalid!\nOnly (a-z , A-Z and space) is valid.")
         }
 
-        if( name !== "" && nameReg.test(name) ){
-            localStorage.setItem("UserName" , name)
-            document.getElementById("userNamePaste").innerText = name+"'s"
+        if (name !== "" && nameReg.test(name)) {
+            localStorage.setItem("UserName", name)
+            document.getElementById("userNamePaste").innerText = name + "'s"
             document.getElementById("userNameDiv").style.display = "none"
         }
-        
-        
+
+
 
     }
 
+    // // // // user name check and set (2nd section )------------->
 
-    const checkUserNameOnLoad =() =>{
+    const CheckUserNameOnLoad = () => {
 
         let userName = localStorage.getItem("UserName")
         // console.log(userName)
-        if(userName){
-            document.getElementById("userNamePaste").innerText = userName+"'s"
+        if (userName) {
+            document.getElementById("userNamePaste").innerText = userName + "'s"
             document.getElementById("userNameDiv").style.display = "none"
         }
-        
+
     }
+
+
+
+
+
+    // // // // Notification implement here ------------------------>
+
+    const handleNotification = () => {
+
+        let howManyTimeAgoH = document.getElementById("howManyTimeAgo").value
+
+        // console.log(howManyTimeAgoH)
+
+        if (!howManyTimeAgoH) {
+            return alert("Give some Time in Hour for gettng notification")
+        }
+
+        // // // Notification code stats here ------->
+
+        // console.log(Notification.permission)
+
+        if (!("Notification" in window)) {
+            // Check if the browser supports notifications
+            alert("This browser does not support desktop notification");
+        } else if (Notification.permission === "granted") {
+            // Check whether notification permissions have already been granted;
+            // if so, create a notification
+            noti(howManyTimeAgoH)
+            // …
+        } else if (Notification.permission !== "denied") {
+
+            // We need to ask the user for permission
+            Notification.requestPermission().then((permission) => {
+                // If the user accepts, let's create a notification
+                if (permission === "granted") {
+
+                    noti(howManyTimeAgoH)
+
+                }
+            });
+
+        } else if (Notification.permission === "denied") {
+            return alert("Notification permission is denied check Browser setting or this page setting.")
+        }
+
+
+    }
+
+
+
+    // // // Make x into h
+
+    function noti(x) {
+
+        let tasks = localStorage.getItem('myTodoList')
+
+        let actualArrOfTasks = JSON.parse(tasks)
+
+        // console.log(actualArrOfTasks[0].name)
+
+        let showTasksInNotification = ""
+
+        for (let i = 0; i < actualArrOfTasks.length; i++) {
+            showTasksInNotification += actualArrOfTasks[i].name + ", "
+        }
+
+        setTimeout(() => {
+            const notification = new Notification("Hi there! ToDo Notification", {
+                body: showTasksInNotification + " are pending tasks.",
+                tag: "",
+                vibrate: [200, 100, 200]
+            });
+
+            // console.log(notification)
+
+            notification.onclick = (e) => {
+                window.location.href = "https://my-todo-zm4b.onrender.com/"
+            }
+
+        }, x * 1000);
+
+
+
+    }
+
+
+
+    // // // Working now in notification ------------->
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -259,7 +363,7 @@ const Todo = () => {
     return (
 
 
-        <div onLoad={()=>{checkUserNameOnLoad()}} className="container min-vw-100  todo_main_body">
+        <div onLoad={() => { CheckUserNameOnLoad() }} className="container min-vw-100  todo_main_body">
 
             <div className="row  ">
 
@@ -286,7 +390,7 @@ const Todo = () => {
 
                     </div>
 
-                   
+
 
 
 
@@ -302,9 +406,9 @@ const Todo = () => {
                         <span className="input-group-text round_btm_input bg-warning">
 
                             {
-                                
 
-                                toggleBtn ? <button className='bg-success text-white'> <i className="fa-solid fa-file-pen" onClick={addItems} ></i>  </button>  : <button className='bg-success text-white' > <i className="fa-solid fa-square-plus" onClick={addItems}></i> </button>
+
+                                toggleBtn ? <button className='bg-success text-white'> <i className="fa-solid fa-file-pen" onClick={addItems} ></i>  </button> : <button className='bg-success text-white' > <i className="fa-solid fa-square-plus" onClick={addItems}></i> </button>
                             }
 
                         </span>
@@ -450,6 +554,51 @@ const Todo = () => {
                                 )
                             })
                         }
+
+
+
+                        {/* Notification block trying here */}
+
+                        <div className=' single_item bg-white d-block d-sm-flex justify-content-between border border-info rounded-2 my-2 px-2 '>
+
+                            <div className='p-1'>
+
+                                <h5 ><strong>LAST. </strong>Notification Box</h5>
+                                <button className="btn btn-outline-dark" type="button" data-bs-toggle="collapse" data-bs-target="#aboutNotification" aria-expanded="false" aria-controls="multiCollapseExample2">About</button>
+                                <i className="fa-solid fa-bell px-3 fs-4"></i>
+                                
+
+                            </div>
+
+                            <div className='text-danger py-2' id='notification_set_result'>
+
+                                <p >Your Notification is <strong>successfully</strong> set don't close tab now.</p>
+                                <p><strong>At</strong> :-{notiDate}</p>
+
+                            </div>
+
+                            <div className='me-5 '>
+
+                                <p className='mb-0'>⬇️Set Notification below</p>
+                                <input type="number" id="howManyTimeAgo" max={24} width={"2000vh"} min={0} placeholder={"5H ⌚"} onKeyDown={(e) => {
+                                    if (e.keyCode === 13) { handleNotification() }
+                                }} />
+                                <button className='btn btn-outline-success btn-sm mb-1' onClick={() => { handleNotification() }}>Set</button>
+
+                            </div>
+
+
+                        </div>
+
+                        <div className="collapse multi-collapse m-2 " id="aboutNotification">
+                            <div className="card card-body rounded rounded-pill px-3 py-1">
+                                Some placeholder content for the first collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                            </div>
+                        </div>
+
+
+
+
 
                     </div>
 
