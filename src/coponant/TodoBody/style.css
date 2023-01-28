@@ -7,10 +7,13 @@
 
 
 .bgForImageAndInput{
-    background-image: linear-gradient(to bottom ,  white   , transparent  , transparent );
-    border-top: 3px solid  skyblue;
+    background-image: linear-gradient(5deg ,transparent , transparent,  white ,transparent   ,transparent , white ,transparent , transparent );
     width: 100%;
-    border-radius: 50%;
+    /* border-radius: 50%; */
+
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+
     padding-top: 3vh !important;
 }
 
