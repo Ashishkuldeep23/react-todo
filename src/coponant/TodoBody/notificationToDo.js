@@ -43,7 +43,7 @@ const NotificationToDo = () => {
      * And then calling main funtion of seviceWorker to show notification.
      * At last removing notification from localStorage and Showing input div by calling show div function with true. 
      */
-    async function sendNotification(hour) {
+    async function sendNotification(seconds) {
 
         // // Give time in seconds
 
@@ -91,7 +91,7 @@ const NotificationToDo = () => {
             localStorage.removeItem("NotificationAt")    // // // Removing previous time after get notification
             showAndHideImpNotification(false)         // // // calling function to back normal , input of time.
 
-        }, hour * 1000 * 3600);
+        }, seconds * 1000 );
 
 
     }
@@ -168,9 +168,11 @@ const NotificationToDo = () => {
 
                     showAndHideImpNotification(true)    // // // Showing successful msg to user.
 
+                    // // // Making time in to seconds to give notification more acurate.
+                    let makeIntoSeconds = hoursInInput * 60 * 60
 
                     // // // // Set time when you get notification ------------>
-                    let timeWhenNotiWillSend = addHoursInPresentTime( hoursInInput)
+                    let timeWhenNotiWillSend = addHoursInPresentTime( makeIntoSeconds)
                     
                     // console.log(timeWhenNotiWillSend)
                     localStorage.setItem("NotificationAt" , timeWhenNotiWillSend)
@@ -180,7 +182,7 @@ const NotificationToDo = () => {
 
 
                     // // // Now calling actual function is last ------->
-                    let giveNotification = sendNotification(hoursInInput);   // // // Calling main function here.
+                    let giveNotification = sendNotification(makeIntoSeconds);   // // // Calling main function here.
 
                     giveNotification.onclick = (e) => {
                         window.location.href = "https://my-todo-zm4b.onrender.com/"
@@ -214,10 +216,11 @@ const NotificationToDo = () => {
 
 
     // // // This fuction is used to add hours in current time ------------>
-    function addHoursInPresentTime( hours) {
+    function addHoursInPresentTime( seconds) {
         // // // hours coming in parameter is in string form , we nee d to convert into interger.
+        // // // So now using seconds to more acurate time show.
         // console.log(typeof hours)
-        let expiryDate =  new Date(new Date().setHours(new Date().getHours() +  parseInt(hours)));
+        let expiryDate =  new Date(new Date().setSeconds(new Date().getSeconds() +  parseInt(seconds)));
         return expiryDate
     }
 
