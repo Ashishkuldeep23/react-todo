@@ -70,7 +70,8 @@ const Feedback = () => {
             feedbackName: feedName,
             feedbackType: checkedRadio,
             feedbackMsg: feedMsg,
-            feedFromWebName: window.location.href
+            feedFromWebName: window.location.href,
+            whenCreated : new Date()
         }
 
 
@@ -268,7 +269,7 @@ const Feedback = () => {
 
 
 
-            <div className='feedback_main'>
+            <div className='feedback_main' >
 
                 <a className="btn btn-primary bg-success" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                     Open Feedback Section
@@ -289,7 +290,7 @@ const Feedback = () => {
 
                                     <div className="row d-flex justify-content-center h-100 ">
 
-                                        <div className="col-10 col-md-6 d-flex flex-column align-items-center  ">
+                                        <div className="col-8 col-md-6 d-flex flex-column align-items-center  ">
 
 
 
@@ -323,7 +324,7 @@ const Feedback = () => {
 
                                                 <div><br />
                                                     <label htmlFor="feed_msg" ><h2>Feedback Message :-</h2></label> <br />
-                                                    <textarea name="feed_msg" placeholder="Nice website (Your Feedback Message)" id="feed_msg" cols="35" rows="7"></textarea>
+                                                    <textarea name="feed_msg" placeholder="Nice website (Your Feedback Message)" id="feed_msg" cols="30" rows="7"></textarea>
                                                 </div>
 
                                                 <div className='d-flex align-items-end' id="feedBtn_div">
@@ -344,7 +345,7 @@ const Feedback = () => {
 
 
 
-                                        <div className="col-10 col-md-6  d-flex flex-column align-items-center justify-content-center right_content">
+                                        <div className="col-7 col-md-6  d-flex flex-column align-items-center justify-content-center right_content">
 
                                             <div className='row' >
 
@@ -358,7 +359,7 @@ const Feedback = () => {
 
                                                         <img src="https://i.pinimg.com/564x/72/6e/92/726e92a0ef5a07e46e0403ae36c0b228.jpg" id="about_img" alt="Ashish Pic" />
 
-                                                        <h1>Ashish Kuldeep</h1>
+                                                        <h1 className='aboutMeMyName'>Ashish Kuldeep</h1>
 
                                                         <div>
                                                             <a href="https://www.linkedin.com/in/ashish-kuldeep-09b96018b" rel="noreferrer" target={"_blank"} ><img src="https://cdn1.iconfinder.com/data/icons/social-media-rounded-corners/512/Rounded_Linkedin2_svg-512.png" className="logos" alt="Linkedin" />
@@ -373,9 +374,9 @@ const Feedback = () => {
 
 
                                                         <div>
-                                                            <h4>I am learning web development.</h4>
-                                                            <h4>I am following MERN Stack.</h4>
-                                                            <h4>Follow me on social media.</h4>
+                                                            <h4 className='aboutMeText'>I am learning web development.</h4>
+                                                            <h4 className='aboutMeText'>I am following MERN Stack.</h4>
+                                                            <h4 className='aboutMeText'>Follow me on social media.</h4>
                                                         </div>
 
 

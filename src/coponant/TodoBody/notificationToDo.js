@@ -80,6 +80,7 @@ const NotificationToDo = () => {
             const options = {
                 body: text,
                 vibrate: [200, 100, 200],
+                icon : "https://i.pinimg.com/564x/3c/6d/eb/3c6debf67d550119ae777083c4b5b4ed.jpg"
                 // tag: "new-product",
                 // actions: [{ action: "Detail", title: "View",  }]
             };

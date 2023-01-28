@@ -295,10 +295,34 @@
     .feed_body{
         height: 93.7vh;
         border-radius: 5vh;
+    }
 
+    .logos{
+        height: 28px;
+        width: 32px;
+        margin: 0.5vh;
+    }
+
+    .aboutMeMyName{
+        font-size: 1.5rem;
+    }
+
+    .aboutMeText{
+        font-size: 0.8rem;
     }
     
+    #about_img{
+        height: 20vh;
+        width: 20vh;
+    }
+
+    .show_All_FeedBack_main{
+        width: 90vw;
+    }
+
 }
+
+
 
 
 

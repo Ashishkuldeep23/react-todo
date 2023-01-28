@@ -36,3 +36,14 @@
     z-index: 100;
 
 }
+
+
+@media (max-width : 576px) {
+  
+    .info_content{
+        font-size: 0.7rem;
+    }
+
+}
+
+

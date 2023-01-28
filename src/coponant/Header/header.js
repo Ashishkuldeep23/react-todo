@@ -27,6 +27,10 @@ const Header = () => {
                 </li>
 
                 <li>
+                  You can write your name in below of ToDo Image input box and hit Enter Key After that your name is visible. (<strong>Your Name , Hit Enter</strong>)
+                </li>
+
+                <li>
                   Here users can write <strong>tasks and update it and delete it</strong>.
                 </li>
 
@@ -43,7 +47,11 @@ const Header = () => {
                 </li>
 
                 <li>
-                 <strong> Icons are</strong> :- <i className="fa-solid fa-square-plus" ></i> : Add , <i className="fa-solid fa-file-pen"></i> : Update , <i className="fa-solid fa-lock"></i> : Lock ,  <i className="fa-solid fa-delete-left"></i> : Delete ,  <i className="fa-sharp fa-solid fa-trash"></i> : All Delete.
+                  <strong>Notificaton</strong> section as last task, after successful set you will get notification (But with conditions ,<strong>Click About Notification</strong> to get more information about notification).
+                </li>
+
+                <li>
+                 <strong> Icons are</strong> :- | <i className="fa-solid fa-square-plus" ></i> : Add | <i className="fa-solid fa-file-pen"></i> : Update | <i className="fa-solid fa-lock"></i> : Lock |  <i className="fa-solid fa-delete-left"></i> : Delete |  <i className="fa-sharp fa-solid fa-trash"></i> : All Delete | <i className="fa-solid fa-bell"></i> : Notification|
                 </li>
 
                 <li>
@@ -53,10 +61,6 @@ const Header = () => {
 
                 <li>
                   Your tasks are stored in your browser's localstorage , so don't worry about that (<strong>Privacy First</strong>).
-                </li>
-
-                <li>
-                  You can write your name in front of ToDo input and hit Enter Key After that your name is visible. (<strong>Your Name , Hit Enter</strong>)
                 </li>
 
                 <p className='text-center '> <i className="fa-brands fa-youtube"></i> -: <a  href="https://www.youtube.com/" rel="noreferrer" target={"_blank"}>https://www.youtube.com/</a></p>
