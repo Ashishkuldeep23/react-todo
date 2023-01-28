@@ -216,7 +216,7 @@ const Todo = () => {
 
     // // // // user name check and set (1st section )------------->
 
-    const userName = () => {
+    const  userName = () => {
         let name = document.getElementById("userNameInput").value.trim()
         // alert(name)
 
@@ -290,10 +290,10 @@ const Todo = () => {
                                         if (e.keyCode === 13) { userName() }
                                     }} />
 
-                                <input type="button" value="ENTER" id='userNameEnter' onClick={userName} />
+                                <input type="button" value="ENTER" id='userNameEnter' onClick={ ()=> {userName()}} />
                             </div>
 
-                            <h1 className='text-white text-center'> Todo ( <strong><span id='userNamePaste' ></span></strong> schedule is )</h1>
+                            <h1 className='text-white text-center'> <strong><span id='userNamePaste' >Today</span></strong> schedule is👇 </h1>
 
                         </div>
 

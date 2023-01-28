@@ -167,13 +167,13 @@ const NotificationToDo = () => {
                     // }
 
                     showAndHideImpNotification(true)    // // // Showing successful msg to user.
-                    // // // // Set time when you get notification ------------>
-                    let date = new Date()
-                    let timeWhenNotiWillSend = addHoursInPresentTime( date , hoursInInput)
 
-                    // console.log(date)
+
+                    // // // // Set time when you get notification ------------>
+                    let timeWhenNotiWillSend = addHoursInPresentTime( hoursInInput)
+                    
                     // console.log(timeWhenNotiWillSend)
-                   localStorage.setItem("NotificationAt" , timeWhenNotiWillSend)
+                    localStorage.setItem("NotificationAt" , timeWhenNotiWillSend)
 
                     // // // Changing type of date to store in useSate() (A good way to put date and time in string letterls)--->
                     setNotiDate( `${timeWhenNotiWillSend}`)
@@ -214,10 +214,19 @@ const NotificationToDo = () => {
 
 
     // // // This fuction is used to add hours in current time ------------>
-    function addHoursInPresentTime(date , hours) {
-        date.setHours(date.getHours() + hours);
-        return date;
+    function addHoursInPresentTime( hours) {
+        // // // hours coming in parameter is in string form , we nee d to convert into interger.
+        // console.log(typeof hours)
+        let expiryDate =  new Date(new Date().setHours(new Date().getHours() +  parseInt(hours)));
+        return expiryDate
     }
+
+    // // // Previously i'm using this but not now.
+    // function addHoursInPresentTime(date , hours) {
+    //     console.log(date)
+    //     date.setHours(date.getHours() + hours);
+    //     return date;
+    // }
 
 
 
@@ -242,13 +251,13 @@ const NotificationToDo = () => {
     return (
         <>
 
-            <div className='notification_div  d-block d-sm-flex justify-content-between border border-info rounded-2 my-2 px-2 '>
+            <div className='notification_div  d-block d-lg-flex justify-content-between border border-info rounded-2 my-2 px-2 '>
 
-                <div className='p-1'>
+                <div className='p-1 d-flex flex-column'>
 
-                    <h5 ><strong>LAST. </strong>Notification Box</h5>
-                    <button className="btn btn-outline-dark" type="button" data-bs-toggle="collapse" data-bs-target="#aboutNotification" aria-expanded="false" aria-controls="multiCollapseExample2">About</button>
-                    <i className="fa-solid fa-bell px-3 fs-4"></i>
+                    <h5 ><strong>LAST. </strong>Notification Box <i className="fa-solid fa-bell px-3 fs-4"></i> </h5>
+                    <button className="btn btn-outline-dark " type="button" data-bs-toggle="collapse" data-bs-target="#aboutNotification" aria-expanded="false" aria-controls="multiCollapseExample2">About Notification</button>
+                    
 
 
                 </div>
@@ -259,7 +268,7 @@ const NotificationToDo = () => {
                     <p className='mb-0' >Read <strong>About</strong> of notification to get successfull Notification.</p>
                     <p className='mb-0'><strong>At</strong> :-{notiDate}</p>
 
-                    <button className='mb-1 btn btn-outline-danger btn-sm d-flex ms-auto me-5' onClick={()=>{resetNotification()}}>Reset</button>
+                    <button className='mb-1 btn btn-outline-danger btn-sm d-flex ms-auto me-5 px-5' onClick={()=>{resetNotification()}}>Reset</button>
 
                 </div>
 
@@ -277,7 +286,7 @@ const NotificationToDo = () => {
             </div>
 
             <div className="collapse multi-collapse m-2 " id="aboutNotification">
-                <div className="card card-body rounded rounded-pill px-3 py-1">
+                <div className="card card-body border border-dark border-2 rounded  p-1">
                     Some placeholder content for the first collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
                 </div>
             </div>
