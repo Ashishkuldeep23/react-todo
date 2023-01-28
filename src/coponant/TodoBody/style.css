@@ -6,6 +6,17 @@
 }
 
 
+.bgForImageAndInput{
+    background-image: linear-gradient(to bottom ,  white   , transparent  , transparent );
+    border-top: 3px solid  skyblue;
+    width: 100%;
+    border-radius: 50%;
+    padding-top: 3vh !important;
+}
+
+
+
+
 #userNameInput{
     width: 30vh;
     border-radius: 2vh;
@@ -176,7 +187,29 @@
 }
 
 
+/* For notification div */
 
+.notification_div{
+    background-color: rgb(229, 247, 250) ;
+}
+
+.notification_div:hover{
+    margin: 1vh;
+    border-radius: 3vh !important;
+    border: 1px solid darkblue !important;
+}
+
+
+.inputOfNotification{
+    width: 50%;
+}
+
+
+
+
+
+
+/*  media query starts here -------> */
 @media (max-width : 576px) {
     
     .todomain{
@@ -184,7 +217,7 @@
     }
 
     #todoImag{
-        width: 35vh;
+        width: 30vh;
     }
 
 }

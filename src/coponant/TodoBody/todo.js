@@ -247,12 +247,16 @@ const Todo = () => {
 
     const CheckUserNameOnLoad = () => {
 
+        // // // Geting name of user ---------->
         let userName = localStorage.getItem("UserName")
         // console.log(userName)
         if (userName) {
             document.getElementById("userNamePaste").innerText = userName + "'s"
             document.getElementById("userNameDiv").style.display = "none"
         }
+
+
+
 
     }
 
@@ -269,27 +273,32 @@ const Todo = () => {
 
                 <div className="col-12 col-sm-9  mx-auto p-3 d-flex flex-column align-items-center ">
 
-                    <div>
-                        <img src="https://i.pinimg.com/564x/3c/6d/eb/3c6debf67d550119ae777083c4b5b4ed.jpg" id='todoImag' alt="Todo" />
-                    </div>
+
+                    <div className=' bgForImageAndInput text-center px-sm-5 py-sm-2'>
 
 
-                    <div className='d-flex  flex-column'>
-
-                        <div id='userNameDiv'>
-                            <input
-                                id='userNameInput' type="text" placeholder='Your Name &#x23CE;' onKeyDown={(e) => {
-                                    if (e.keyCode === 13) { userName() }
-                                }} />
-
-                            <input type="button" value="ENTER" id='userNameEnter' onClick={userName} />
+                        <div>
+                            <img src="https://i.pinimg.com/564x/3c/6d/eb/3c6debf67d550119ae777083c4b5b4ed.jpg" id='todoImag' alt="Todo" />
                         </div>
 
-                        <h1 className='text-white text-center'> Todo ( <strong><span id='userNamePaste' ></span></strong> schedule is )</h1>
+
+                        <div className='d-flex  flex-column'>
+
+                            <div id='userNameDiv'>
+                                <input
+                                    id='userNameInput' type="text" placeholder='Your Name &#x23CE;' onKeyDown={(e) => {
+                                        if (e.keyCode === 13) { userName() }
+                                    }} />
+
+                                <input type="button" value="ENTER" id='userNameEnter' onClick={userName} />
+                            </div>
+
+                            <h1 className='text-white text-center'> Todo ( <strong><span id='userNamePaste' ></span></strong> schedule is )</h1>
+
+                        </div>
+
 
                     </div>
-
-
 
 
 
