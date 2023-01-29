@@ -260,7 +260,7 @@ const NotificationToDo = () => {
                 <div className='p-1 d-flex flex-column'>
 
                     <h5 ><strong>LAST. </strong>Notification Box <i className="fa-solid fa-bell px-3 fs-4"></i> </h5>
-                    <button className="btn btn-outline-dark " type="button" data-bs-toggle="collapse" data-bs-target="#aboutNotification" aria-expanded="false" aria-controls="multiCollapseExample2">About Notification</button>
+                    <button className="btn btn-outline-dark w-75" type="button" data-bs-toggle="collapse" data-bs-target="#aboutNotification" aria-expanded="false" aria-controls="multiCollapseExample2">About Notification</button>
                     
 
 
@@ -284,6 +284,7 @@ const NotificationToDo = () => {
                     }} />
                     <button className='inputOfNotification btn btn-outline-success btn-sm mb-1' onClick={() => { notificationHandlerMain() }}>Set</button>
                     <p><small className='mb-0'>☝️How many <strong>Hour</strong> after you want notification!</small></p> 
+
                 </div>
 
 
@@ -291,7 +292,17 @@ const NotificationToDo = () => {
 
             <div className="collapse multi-collapse m-2 " id="aboutNotification">
                 <div className="card card-body border border-dark border-2 rounded  p-1">
-                    Some placeholder content for the first collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                    <h5>Improtant about getting Notification.</h5>
+                    <ul>
+                        <li>Make sure Chrome or Browser is open in the background.</li>  
+                        <li>ToDo tab should be open in the background and also the tab not refreshed.</li>  
+                        <li>Given time should be in hours.</li>
+                        <li>If a task is present then only you will get notification.</li>
+                        <li>Make these things done (<strong>Browser and ToDo tab should open in background</strong>) , hopefully 🤞 you will get successful notification.</li>  
+                        <li>For those who are curious person or who want to test notification, <strong>give 0.00055 time in the input box then you will get notification within 2 seconds.</strong></li>
+                        <li>If you have any suggestions then use the notification section, please.</li>
+                        <li>Thank You!</li>
+                    </ul>
                 </div>
             </div>
 

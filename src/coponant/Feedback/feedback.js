@@ -60,19 +60,20 @@ const Feedback = () => {
             // alertBoxValue = 1
             // return showAlertBox("Feedback message should be given.", false)
 
-
             return alert("Feedback message should be given.")
-
         }
 
+        let date = new Date()
 
         let body = {
             feedbackName: feedName,
             feedbackType: checkedRadio,
             feedbackMsg: feedMsg,
             feedFromWebName: window.location.href,
-            whenCreated : new Date()
+            whenCreated : `${date}`
         }
+
+        console.log(body)
 
 
         let option = {
@@ -303,8 +304,8 @@ const Feedback = () => {
                                                     <input type="text" placeholder="Guest (Default)" id="feed_name" />
                                                 </div><br />
 
+                                                <h2 >Types of Feedback :-</h2>
                                                 <div id="feed_radio">
-                                                    <h2>Types of Feedback :-</h2>
                                                     <input type="radio" name="feed_type" value="Feedback" id="feedback_only" defaultChecked={true}
                                                     /><label htmlFor='feedback_only' >Feedback</label><br />
 
@@ -345,7 +346,7 @@ const Feedback = () => {
 
 
 
-                                        <div className="col-7 col-md-6  d-flex flex-column align-items-center justify-content-center right_content">
+                                        <div className="col-8 col-md-6  d-flex flex-column align-items-center justify-content-center right_content">
 
                                             <div className='row' >
 
