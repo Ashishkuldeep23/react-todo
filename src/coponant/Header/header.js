@@ -63,7 +63,8 @@ const Header = () => {
                   Your tasks are stored in your browser's localstorage , so don't worry about that (<strong>Privacy First</strong>).
                 </li>
 
-                <p className='text-center '> <i className="fa-brands fa-youtube"></i> -: <a  href="https://www.youtube.com/" rel="noreferrer" target={"_blank"}>https://www.youtube.com/</a></p>
+                <p className='text-center m-0'> <i className="fa-brands fa-youtube"></i> -: <a  href="https://youtu.be/WM9j3YSJZ5E" rel="noreferrer" target={"_blank"}>https://youtu.be/WM9j3YSJZ5E</a></p>
+                <p className='text-center '>☝️All features of ToDo web app.</p>
               </ol>
             </div>
           </div>
