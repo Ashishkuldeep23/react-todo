@@ -370,7 +370,7 @@ const Feedback = () => {
 
                                                             <a href="https://mobile.twitter.com/ashishkuldeep23" rel="noreferrer" target={"_blank"}><img src="https://cdn1.iconfinder.com/data/icons/social-media-rounded-corners/512/Rounded_Twitter5_svg-512.png" className="logos" alt="Tiwtter" /></a>
 
-                                                            <a href="https://www.youtube.com/" rel="noreferrer" target={"_blank"} ><img src="https://cdn1.iconfinder.com/data/icons/social-media-rounded-corners/512/Rounded_Youtube3_svg-512.png" className="logos" alt="Youtube" /></a>
+                                                            <a href="https://www.youtube.com/@ashishkuldeep2305" rel="noreferrer" target={"_blank"} ><img src="https://cdn1.iconfinder.com/data/icons/social-media-rounded-corners/512/Rounded_Youtube3_svg-512.png" className="logos" alt="Youtube" /></a>
                                                         </div>
 
 
