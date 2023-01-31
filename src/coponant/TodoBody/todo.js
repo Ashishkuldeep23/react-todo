@@ -8,8 +8,10 @@ import NotificationToDo from "./notificationToDo.js"
 
 
 
-
-// // // Get the local storage data back ----->
+/**
+ * Getying all task present in local storage ================>>>>>>>>>>
+ * // // // Get the local storage data back ----->
+ */
 const getLocalData = () => {
     const lists = localStorage.getItem("myTodoList");
     if (lists) {
@@ -21,20 +23,43 @@ const getLocalData = () => {
 }
 
 
+
+/**
+ * Export function starts here =============>
+ * Todo funcitional component start here ===========> 
+ *
+*/
+
 const Todo = () => {
 
+    /**
+     * Some Improtant Hooks ===============>
+    */
+
+
+    // // // Below Hook is used for add new task in localStorage ---->
     const [newTask, setNewTask] = useState("");
 
     // // // Below for set item by given data and locally present data
     const [items, setItems] = useState(getLocalData())
 
+
+    // // // Below is used in edit task in update function -------->
     const [isEditTask, setUpdateTask] = useState("");
 
+    // // // Below useState is used in add or update button ---->
     const [toggleBtn, setToggleBtn] = useState(false)
 
 
 
-    // // // add items function
+    
+    /**
+     * // // // add items function
+     * Add new task fuction.
+     * In if condition , if and ask not written in input box.
+     * In else if , newTask is written in inpurt box with toggleBtn is true means in update mode.
+     * In else, If fresh task comes then set into useState.
+    */
     function addItems() {
         if (!newTask) {
             new Audio(error).play()
@@ -68,8 +93,11 @@ const Todo = () => {
 
 
 
-    // // // Update items --->
 
+    /**
+     * // // // Update items --->
+     * If update button will clicked then it will run.
+    */
     const updateTask = (idGeted, name) => {
 
         // // By below line of code when update btn clicked then input in focused mode means ready to take input.
@@ -83,6 +111,11 @@ const Todo = () => {
 
 
 
+
+    /**
+     * This function is used to ask confirmation with user when he/she try to delete locked Task --->
+     * 
+     */
     let ask = () => {
         const confirmBox = window.confirm(
             "Do you really want to delete this Task?"
@@ -92,7 +125,12 @@ const Todo = () => {
 
 
 
-    // // // Delete single item --->
+
+    /** 
+    * Delete single item --->
+    * first if is not locked or not locked in past , then direct delete.
+    * If task is locked then ask one more time for delete. 
+    */  
     function deleteOneItem(id, lock) {
 
         // console.log(id , lock)
@@ -111,6 +149,12 @@ const Todo = () => {
     }
 
 
+
+
+    /**
+     * Actual delete function here ---------->
+     *  
+    */
     function actualDeleteOne(idGeted) {
         // // // Below is working fine for delete any task ----->
         const updatedItems = items.filter((curEle) => {
@@ -124,29 +168,40 @@ const Todo = () => {
 
 
 
-    // // // // Removing all Tasks -->
+
+    /**
+     * This function i used in all delete function.
+     * So it will check task is locked or not if task is locked then it will created a list of all locked task and put that list in add items hook in last.
+     */
     const removeAllTasks = () => {
 
+        // // // Past
+        // let check = items.filter((curEle) => {
+        //     if (curEle.lock === "true") {
+        //         // console.log(curEle.name,"=>",curEle.lock)
+        //         return curEle
+        //     }
+        //     return ""
+        // })
+
+        // // // Now
         let check = items.filter((curEle) => {
-            if (curEle.lock === "true") {
-                // console.log(curEle.name,"=>",curEle.lock)
-                return curEle
-            }
-
-            return ""
-
+            return curEle.lock === "true"
         })
-
 
         let a = new Audio(done)
         a.play()
-
         setItems([...check]);
     }
 
 
-    // // // // Lock one task ----->
 
+
+    /**
+     * // // // // Lock one task ----->
+     * This function is used to lock task.
+     * Two if condition esay to understand --->
+    */
     const lockThisTask = (id) => {
 
         const makeLock = items.map((curEle) => {
@@ -167,7 +222,10 @@ const Todo = () => {
 
 
 
-    // // // Data save in local storage by useEffect hooks -->
+    /**
+     * // // // Data save in local storage by useEffect hooks -->
+     * useEffect hook is use to store new task in localStorage  ---->
+     */
     useEffect(() => {
         localStorage.setItem("myTodoList", JSON.stringify(items))
     }, [items])
@@ -175,7 +233,11 @@ const Todo = () => {
 
 
 
-    // // // Time how many ago written a task.
+    /**
+     * // // // Time how many ago written a task.
+     * This  fuction will tell time to user when he or she created task ------>
+     * 
+    */
     const timeDiffFunc = (date) => {
 
         let outPut = ""
@@ -214,7 +276,12 @@ const Todo = () => {
 
 
 
-    // // // // user name check and set (1st section )------------->
+
+    /**
+     * // // // // user name check and set (1st section )------------->
+     * User enter his or her name then check is vailid or not ------>
+     * 
+     */
 
     const  userName = () => {
         let name = document.getElementById("userNameInput").value.trim()
@@ -223,12 +290,9 @@ const Todo = () => {
         const nameReg = (/^[a-zA-Z]+([\s][a-zA-Z]+)*$/);
 
         // alert(nameReg.test(name))
-
         if (name === "") {
             return alert("Name not given!")
         }
-
-
         if (!nameReg.test(name)) {
             return alert("Given name is Invalid!\nOnly (a-z , A-Z and space) is valid.")
         }
@@ -239,14 +303,16 @@ const Todo = () => {
             document.getElementById("userNameDiv").style.display = "none"
         }
 
-
-
     }
 
-    // // // // user name check and set (2nd section )------------->
 
+    
+    /**
+     * This function will run on every time on reload --->
+     *  // // // // user name check and set (2nd section )------------->
+     * 
+     */
     const CheckUserNameOnLoad = () => {
-
         // // // Geting name of user ---------->
         let userName = localStorage.getItem("UserName")
         // console.log(userName)
@@ -254,14 +320,15 @@ const Todo = () => {
             document.getElementById("userNamePaste").innerText = userName + "'s"
             document.getElementById("userNameDiv").style.display = "none"
         }
-
-
-
-
     }
 
 
-    // // // UI starts here -------------->
+    
+
+    /**
+     * UI code starts here ====================================>>>>>
+     * // // // UI starts here -------------->
+    */
 
     return (
 
@@ -289,11 +356,10 @@ const Todo = () => {
                                     id='userNameInput' type="text" placeholder='Your Name &#x23CE;' onKeyDown={(e) => {
                                         if (e.keyCode === 13) { userName() }
                                     }} />
-
                                 <input type="button" value="ENTER" id='userNameEnter' onClick={ ()=> {userName()}} />
                             </div>
 
-                            <h1 className='text-white text-center'> <strong><span id='userNamePaste' >Today</span></strong> schedule is👇 </h1>
+                            <h1 className='text-white text-center'> <strong><span id='userNamePaste' >Today's</span></strong> schedule is👇 </h1>
 
                         </div>
 
@@ -406,7 +472,7 @@ const Todo = () => {
 
                                             <div className=' d-flex '>
 
-
+                                                
                                                 <div className='update_main mx-auto px-1' onClick={() => { updateTask(curEle.id, curEle.name) }}>
                                                     <div className="dropdown-content_update" onClick={() => { updateTask(curEle.id, curEle.name) }}>
                                                         <p className='bg-success'>Update</p>
