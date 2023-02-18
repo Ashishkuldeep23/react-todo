@@ -22,9 +22,10 @@ body {
 
 
 *::selection{
-  color: red;
-  background-color: black;
-  /* background-color: transparent; */
+
+  color: transparent;
+  background-color: transparent;
+
 }
 
 

@@ -141,6 +141,10 @@
 }
 
 
+
+/* About Me css -------------> (Starts) */
+
+
 .aboutMeAk{
     box-shadow: -20px 30px 30px black;
 }
@@ -181,6 +185,10 @@
 .logos:active{
     background-color: yellow;
 }
+
+/* About Me css -------------> (Ends) */
+
+
 
 
 /* Feedback main style Ends here --> */
@@ -297,11 +305,6 @@
         border-radius: 5vh;
     }
 
-    .logos{
-        height: 28px;
-        width: 32px;
-        margin: 0.5vh;
-    }
 
     .aboutMeMyName{
         font-size: 1.5rem;
@@ -315,6 +318,14 @@
         height: 20vh;
         width: 20vh;
     }
+
+    .logos{
+        height: 28px;
+        width: 32px;
+        margin: 0.5vh;
+    }
+
+
 
     .show_All_FeedBack_main{
         width: 90vw;
